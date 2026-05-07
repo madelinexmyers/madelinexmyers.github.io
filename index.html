@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Madeline — Copywriter</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --cream: #ece7dc;
+    --cream-deep: #e0dbcf;
+    --stone: #8c8a85;
+    --sage: #6b7965;
+    --sage-light: #c5cdc0;
+    --ink: #1a1a1a;
+    --ink-soft: #4a4a4a;
+    --paper: #f5f1e8;
+    --rust: #b85842;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { padding: 0 56px; }
+
+  /* nav */
+  nav.top {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    z-index: 50;
+    padding: 36px 56px;
+    display: flex; justify-content: space-between; align-items: center;
+    color: var(--cream);
+  }
+  nav.top .logo {
+    display: inline-flex;
+    align-items: center;
+    color: var(--cream);
+  }
+  nav.top .logo svg {
+    height: 38px;
+    width: auto;
+    display: block;
+  }
+  nav.top ul {
+    list-style: none; display: flex; gap: 36px;
+    font-family: 'Fraunces', serif;
+    font-size: 17px;
+    font-weight: 400;
+  }
+  nav.top a {
+    color: inherit; text-decoration: none;
+    transition: opacity 0.2s ease;
+  }
+  nav.top a:hover { opacity: 0.65; }
+
+  /* hero */
+  .hero {
+    position: relative;
+    background: #6e6c66;
+    height: 50vh;
+    min-height: 480px;
+    overflow: hidden;
+  }
+  .hero-star {
+    position: absolute;
+    color: var(--cream);
+    opacity: 0.92;
+    pointer-events: none;
+  }
+  .hero-star.one {
+    top: 13%; right: 12%;
+    width: 110px; height: 110px;
+    transform: rotate(8deg);
+  }
+  .hero-star.two {
+    bottom: 22%; right: 28%;
+    width: 56px; height: 56px;
+    transform: rotate(-14deg);
+    opacity: 0.75;
+  }
+  .hero-overlay {
+    position: relative; z-index: 3;
+    height: 100%;
+    padding: 200px 56px 0;
+    color: var(--cream);
+  }
+  .hero-overlay p {
+    font-family: 'Inter', sans-serif;
+    font-size: 17px;
+    line-height: 1.55;
+    max-width: 460px;
+  }
+  .hero-headline {
+    position: absolute;
+    bottom: -22px;
+    left: 0; right: 0;
+    padding: 0 56px;
+    z-index: 4;
+    pointer-events: none;
+  }
+  .hero-headline h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: clamp(80px, 14vw, 200px);
+    line-height: 0.9;
+    letter-spacing: -0.035em;
+    color: var(--cream);
+    font-variation-settings: "opsz" 144;
+  }
+
+  /* about */
+  .about {
+    background: var(--cream);
+    padding: 140px 56px 160px;
+  }
+  .about p {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(32px, 4.6vw, 64px);
+    line-height: 1.05;
+    letter-spacing: -0.018em;
+    color: var(--ink);
+    max-width: 1400px;
+  }
+  .about p .accent {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--sage);
+  }
+
+  /* work blocks */
+  .work-block {
+    padding: 120px 56px;
+    border-top: 1px solid rgba(26,26,26,0.12);
+  }
+  .work-block.sage {
+    background: var(--sage);
+    color: var(--cream);
+    border-top: none;
+  }
+  .work-block.paper {
+    background: var(--paper);
+  }
+  .work-block.cream-deep {
+    background: var(--cream-deep);
+  }
+  .work-block .label {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    opacity: 0.7;
+  }
+  .work-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .work-block h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(48px, 6vw, 88px);
+    line-height: 1;
+    letter-spacing: -0.025em;
+  }
+  .work-block h2 em {
+    font-style: italic;
+    font-weight: 300;
+  }
+  .work-block .body {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    max-width: 520px;
+  }
+  .work-block .body p + p { margin-top: 16px; }
+  .work-block.sage .body { color: rgba(236,231,220,0.85); }
+
+  /* sample tiles — horizontal scroll */
+  .samples {
+    margin: 64px -56px 0;
+    padding: 8px 56px 32px;
+    scroll-padding-left: 56px;
+    scroll-padding-right: 56px;
+    display: flex;
+    gap: 24px;
+    overflow-x: auto;
+    overflow-y: visible;
+    scroll-snap-type: x proximity;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(26,26,26,0.3) transparent;
+  }
+  .samples::-webkit-scrollbar { height: 6px; }
+  .samples::-webkit-scrollbar-track { background: transparent; }
+  .samples::-webkit-scrollbar-thumb {
+    background: rgba(26,26,26,0.25);
+    border-radius: 3px;
+  }
+  .work-block.sage .samples {
+    scrollbar-color: rgba(236,231,220,0.35) transparent;
+  }
+  .work-block.sage .samples::-webkit-scrollbar-thumb {
+    background: rgba(236,231,220,0.35);
+  }
+  .sample {
+    flex: 0 0 300px;
+    aspect-ratio: 5/6;
+    padding: 28px;
+    display: flex; flex-direction: column; justify-content: space-between;
+    transition: transform 0.3s ease;
+    background: rgba(26,26,26,0.04);
+    border: 1px solid rgba(26,26,26,0.08);
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    text-align: left;
+    color: inherit;
+    font: inherit;
+    scroll-snap-align: start;
+  }
+  .work-block.sage .sample {
+    background: rgba(236,231,220,0.08);
+    border-color: rgba(236,231,220,0.18);
+  }
+  .sample:hover { transform: translateY(-4px); }
+  .sample.has-image {
+    color: var(--cream);
+    border-color: transparent;
+  }
+  .sample .img {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    background-size: cover;
+    background-position: center;
+  }
+  .sample.has-image::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.15) 50%, rgba(0,0,0,0.55) 100%);
+  }
+  .sample .tag {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    opacity: 0.6;
+  }
+  .sample.has-image .tag { opacity: 0.85; }
+  .sample .name {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+  .sample .meta {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    opacity: 0.65;
+    display: flex; justify-content: space-between;
+  }
+  .sample.has-image .meta { opacity: 0.9; }
+  .sample.clickable { cursor: pointer; }
+  .sample.clickable:focus-visible {
+    outline: 2px solid var(--rust);
+    outline-offset: 4px;
+  }
+  .sample .arrow {
+    position: absolute;
+    top: 28px; right: 28px;
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    border: 1px solid currentColor;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; line-height: 1;
+    opacity: 0.6;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  .sample.clickable:hover .arrow { opacity: 1; transform: rotate(-45deg); }
+
+  /* modal */
+  .modal-backdrop {
+    position: fixed; inset: 0;
+    background: rgba(20,20,18,0.65);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 100;
+    overflow-y: auto;
+    padding: 56px 24px;
+  }
+  .modal-backdrop.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .modal {
+    background: var(--cream);
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0;
+    position: relative;
+    transform: translateY(20px) scale(0.98);
+    opacity: 0;
+    transition: opacity 0.35s ease 0.05s, transform 0.35s ease 0.05s;
+  }
+  .modal-backdrop.open .modal {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  .modal-close {
+    position: absolute;
+    top: 24px; right: 24px;
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: var(--cream);
+    border: 1px solid rgba(26,26,26,0.2);
+    color: var(--ink);
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 18px; line-height: 1;
+    z-index: 4;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+  .modal-close:hover { background: var(--ink); color: var(--cream); }
+  .modal-body {
+    padding: 56px 64px 64px;
+  }
+  .modal-tag {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 16px;
+  }
+  .modal-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(40px, 5vw, 64px);
+    line-height: 1.05;
+    letter-spacing: -0.022em;
+    margin-bottom: 32px;
+    max-width: 760px;
+  }
+  .modal-grid {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 64px;
+    align-items: start;
+    border-top: 1px solid rgba(26,26,26,0.2);
+    padding-top: 40px;
+  }
+  .modal-meta {
+    position: sticky;
+    top: 24px;
+  }
+  .modal-meta dt {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 6px;
+  }
+  .modal-meta dd {
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    line-height: 1.3;
+    margin-bottom: 24px;
+  }
+  .modal-meta dd:last-child { margin-bottom: 0; }
+  .modal-email {
+    background: var(--cream-deep);
+    width: 100%;
+    display: block;
+  }
+  .modal-email img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .modal-email-placeholder {
+    aspect-ratio: 3/5;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    opacity: 0.5;
+  }
+  body.modal-open { overflow: hidden; }
+
+  @media (max-width: 720px) {
+    .modal-body { padding: 32px 24px 40px; }
+    .modal-grid { grid-template-columns: 1fr; gap: 32px; }
+    .modal-meta { position: static; }
+  }
+
+  /* faq */
+  .faq {
+    background: var(--sage);
+    color: var(--cream);
+    padding: 140px 56px;
+  }
+  .faq-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 80px;
+  }
+  .faq h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(48px, 6vw, 84px);
+    line-height: 1;
+    letter-spacing: -0.025em;
+  }
+  .faq h2 em { font-style: italic; font-weight: 300; }
+  .faq-list { display: flex; flex-direction: column; }
+  .faq-item {
+    padding: 32px 0;
+    border-bottom: 1px solid var(--rust);
+  }
+  .faq-item:first-child { padding-top: 8px; }
+  .faq-item:last-child { border-bottom: none; }
+  .faq-item .q {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    margin-bottom: 14px;
+    letter-spacing: -0.005em;
+  }
+  .faq-item .a {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.65;
+    color: rgba(236,231,220,0.78);
+    max-width: 620px;
+  }
+
+  /* contact */
+  .contact {
+    background: var(--cream);
+    padding: 160px 56px 80px;
+  }
+  .contact h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: clamp(80px, 12vw, 180px);
+    line-height: 0.92;
+    letter-spacing: -0.035em;
+    margin-bottom: 80px;
+  }
+  .contact h3 em { font-style: italic; }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 40px;
+    border-top: 1px solid rgba(26,26,26,0.2);
+    padding-top: 40px;
+  }
+  .contact-grid .label {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 8px;
+  }
+  .contact-grid .value {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    letter-spacing: -0.01em;
+  }
+  .contact-grid .value a {
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease;
+  }
+  .contact-grid .value a:hover { border-bottom-color: var(--ink); }
+  .baseline {
+    margin-top: 80px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(26,26,26,0.2);
+    display: flex; justify-content: space-between;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: var(--ink-soft);
+    letter-spacing: 0.04em;
+  }
+  .baseline .logo-mini {
+    display: inline-flex;
+    align-items: center;
+    color: var(--ink);
+  }
+  .baseline .logo-mini svg {
+    height: 22px;
+    width: auto;
+    display: block;
+  }
+
+  @media (max-width: 880px) {
+    .wrap, nav.top, .about, .work-block, .faq, .contact { padding-left: 24px; padding-right: 24px; }
+    .hero-overlay { padding: 140px 24px 0; }
+    .hero-headline { padding: 0 24px; }
+    nav.top { padding: 24px; }
+    nav.top ul { gap: 20px; font-size: 15px; }
+    .work-grid, .faq-grid, .contact-grid { grid-template-columns: 1fr; gap: 32px; }
+    .samples { grid-template-columns: 1fr 1fr; }
+    .hero { height: 50vh; min-height: 440px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <svg class="hero-star one" viewBox="0 0 100 100" fill="currentColor" aria-hidden="true">
+    <path d="M50 0 L54 32 L72 8 L62 38 L92 18 L68 44 L100 50 L68 56 L92 82 L62 62 L72 92 L54 68 L50 100 L46 68 L28 92 L38 62 L8 82 L32 56 L0 50 L32 44 L8 18 L38 38 L28 8 L46 32 Z"/>
+  </svg>
+  <svg class="hero-star two" viewBox="0 0 100 100" fill="currentColor" aria-hidden="true">
+    <path d="M50 0 L54 32 L72 8 L62 38 L92 18 L68 44 L100 50 L68 56 L92 82 L62 62 L72 92 L54 68 L50 100 L46 68 L28 92 L38 62 L8 82 L32 56 L0 50 L32 44 L8 18 L38 38 L28 8 L46 32 Z"/>
+  </svg>
+  <nav class="top">
+    <a href="#" class="logo" aria-label="Madeline">
+      <svg viewBox="0 0 386 267" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M115.872 22.9824C122.396 22.9923 117.39 35.1784 116.663 38.6777C114.734 47.9647 112.55 56.696 112.483 66.2578C112.365 83.0989 113.62 99.8725 111.818 116.668C111.701 120.094 112.092 123.555 111.898 126.978C109.874 162.784 111.146 198.796 111.574 234.64C111.861 238.783 111.713 243.278 112.223 247.378C113.031 253.876 114.836 259.053 114.574 265.734L113.895 266.348C103.853 267.482 105.891 218.373 105.822 211.392C105.613 196.398 105.511 181.403 105.518 166.409C105.628 150.509 106.376 134.628 106.436 118.695C106.472 109.113 107.807 100.42 107.007 90.5C106.503 84.2434 106.975 79.1057 105.99 72.5439C100.134 82.8484 99.9571 93.2008 97.374 103.994C94.2392 116.3 90.1281 128.339 87.3252 140.732C86.2553 145.464 85.4602 150.226 84.7412 155.028C84.1614 158.903 83.6691 162.656 82.4316 166.423C81.3716 169.649 79.4587 172.854 77.0117 175.277C75.8881 176.39 73.9396 177.649 72.2021 177.397C52.181 171.914 49.9541 145.036 46.7451 128.991L41.8457 105.655C41.4181 103.592 40.3182 97.1514 39.2324 95.8711C37.4731 97.4488 35.1371 120.285 34.7021 124.172C33.4646 137.784 29.6825 151.588 26.334 164.859L19.3887 193.006C16.0055 206.262 11.3352 220.427 10.6104 234.104C10.2226 241.412 10.681 248.611 4.04004 253.248C0.519555 253.452 0.37903 248.371 0 245.801C3.7954 240.628 4.2495 230.924 5.95508 224.601C9.06474 213.082 12.0786 201.527 15.0254 189.965L22.9756 159.621C24.0003 155.829 26.1227 149.795 26.7705 146.25C28.6588 135.92 31.8434 123.343 32.4258 112.92C32.8395 105.517 34.1928 95.1419 34.0869 87.9932C33.9182 76.6321 30.7738 64.2733 33.3857 52.416C33.6052 51.4192 34.2925 51.2231 35.0596 50.8281C38.9288 51.3824 40.8322 60.6673 41.4453 64.1006C45.0907 84.5128 46.6853 105.148 51.6572 125.337C52.404 128.703 52.5946 132.268 53.4141 135.608C56.385 147.721 58.0423 162.13 69.0996 169.853C72.7799 172.423 74.3126 171.733 75.9492 167.91C80.6244 156.991 81.6227 145.055 85.4131 133.807C92.7363 114.448 96.6488 95.0473 101.468 75.0293C102.613 70.9785 104.629 67.111 105.659 63.0273C108.973 49.887 107.276 34.2281 115.872 22.9824ZM382.421 0C387.889 1.73929 385.201 13.7861 383.997 17.8125C380.998 27.8348 380.676 40.7867 378.019 50.3125C373.606 66.1192 375.27 79.7601 374.751 95.332L374.694 96.8447L374.757 98.2773C375.323 113.042 373.277 126.716 373.934 141.577C374.953 164.669 374.098 187.855 380.935 210.255C381.985 213.763 388.16 216.832 384.307 221.025C377.662 226.912 375.133 213.031 374.062 209.236C368.049 187.926 369.229 165.402 368.018 143.438C367.198 128.551 370.57 111.78 369.222 97.0215C369.041 89.3795 369.084 81.7336 369.358 74.0947C366.014 79.5203 364.826 85.6932 362.827 91.668C357.582 107.339 353.212 123.391 346.202 138.402C344.391 142.282 341.317 148.365 336.863 149.752C335.895 150.053 334.954 149.961 334.092 149.415C329.607 146.565 325.687 121.07 324.919 114.897C323.653 104.706 323.692 94.604 321.567 84.4727C321.686 84.4558 321.801 84.4416 321.913 84.4287H321.912C321.801 84.4416 321.685 84.4558 321.566 84.4727C320.21 79.0197 319.865 74.3886 318.721 69.4385C316.964 75.5895 316.58 81.0059 315.306 87.1123C307.575 124.239 295.638 160.393 288.386 197.623C287.261 203.416 285.43 209.162 284.497 215.018C283.117 221.806 282.176 230.307 280.436 236.856C280.503 238.581 281.089 242.959 281.148 245.904C281.156 246.306 281.155 246.681 281.141 247.019C281.136 247.131 281.13 247.24 281.122 247.344C281.092 247.761 281.037 248.105 280.953 248.354C280.932 248.415 280.91 248.471 280.885 248.521C280.86 248.57 280.833 248.613 280.804 248.649C280.696 248.596 280.587 248.531 280.479 248.453C280.316 248.336 280.153 248.193 279.99 248.028C279.882 247.919 279.774 247.799 279.667 247.672C279.506 247.48 279.345 247.271 279.188 247.047C278.242 245.706 277.376 243.872 276.793 242.58C276.663 242.293 276.548 242.033 276.448 241.811H276.449L276.291 241.265C273.13 229.727 279.333 212.889 281.494 201.295C284.227 186.652 288.508 172.205 292.683 157.929C293.137 156.165 293.832 154.463 294.251 152.689C302.354 118.457 314.541 84.2832 314.153 48.6689C314.063 40.4052 311.699 32.2645 310.111 24.252C309.845 22.9085 309.367 19.9535 309.669 18.3994C314.459 8.88655 318.713 25.039 318.96 28.6621C320.238 47.3699 323.951 65.6826 326.318 84.1514C328.584 95.5019 328.459 101.975 329.858 112.813C331.176 122.547 333.492 132.119 336.77 141.379C346.386 132.241 355.955 94.1176 361.165 81.0039C368.48 62.5998 372.036 46.1014 374.278 26.583C374.839 21.7166 376.976 0.985738 382.421 0ZM167.355 80.3252C169.588 81.0261 171.258 83.082 172.042 85.1836C174.236 90.9839 174.405 97.0669 176.493 102.947C180.234 113.46 185.447 123.39 189.314 133.855C191.888 140.814 194.753 147.212 198.332 153.693C201.781 147.838 204.154 141.3 207.086 135.157C207.617 134.104 208.281 132.998 208.872 131.964C212.975 123.267 217.865 114.312 222.312 105.766C226.985 96.8099 230.722 90.572 238.234 83.7891C246.004 76.7715 251.038 83.323 247.09 88.4326H247.091C243.037 95.0694 237.644 104.489 231.809 109.525C235.556 104.217 239.525 98.7723 242.925 93.2402C243.382 92.4947 243.136 90.9635 242.686 90.2324C240.263 90.7597 234.125 97.0713 232.627 99.4854C228.057 106.835 223.947 114.062 220.01 121.762C217.76 125.853 216.237 130.886 213.931 134.901C209.786 142.11 205.701 149.84 202.526 157.512C201.25 160.601 204.491 171.1 205.528 174.529H205.529C206.4 176.157 207.289 177.764 208.189 179.357C209.99 182.545 211.835 185.684 213.666 188.852C214.124 189.644 214.581 190.438 215.036 191.234C215.491 192.031 215.945 192.831 216.396 193.635C217.969 196.528 219.191 199.66 220.545 202.704C220.68 203.008 220.817 203.312 220.955 203.614C221.232 204.219 221.517 204.819 221.812 205.411C222.256 206.3 222.724 207.171 223.23 208.018C225.821 212.348 228.476 216.639 231.066 220.967C231.807 222.203 232.542 223.442 233.269 224.687C233.995 225.93 234.713 227.179 235.42 228.435C236.834 230.945 238.204 233.481 239.503 236.057C239.828 236.701 240.148 237.347 240.464 237.996C240.622 238.322 240.746 238.703 240.83 239.109C240.872 239.312 240.904 239.522 240.925 239.734C240.946 239.947 240.956 240.163 240.954 240.378C240.953 240.593 240.94 240.807 240.914 241.018C240.838 241.648 240.65 242.241 240.33 242.699C240.225 242.725 240.118 242.738 240.011 242.741C239.957 242.743 239.903 242.742 239.849 242.738C238.278 242.634 236.543 240.401 235.96 239.149C230.722 227.93 224.257 217.662 217.953 207.04C214.153 200.639 211.115 193.416 207.708 186.773C206.214 183.719 203.746 180.219 202.399 177.311C200.578 173.659 199.26 170.908 196.673 167.698C193.034 174.973 189.55 182.264 185.897 189.55C183.936 193.546 181.44 197.142 179.499 201.156C173.29 213.989 168.892 227.782 162.451 240.425C162.033 241.244 161.077 241.652 160.216 241.736C155.129 237.42 163.063 225.019 164.986 220.812C169.729 210.197 174.795 199.732 180.181 189.427C184.027 182.164 191.642 168.828 194.609 161.437L194.768 161.036C193.973 158.454 192.587 155.713 191.617 153.115C188.727 145.406 185.616 137.372 182.188 129.898C178.813 122.536 175.045 115.508 171.951 107.986C169.209 101.32 167.419 94.5207 165.274 87.6533C164.54 85.273 164.016 80.7477 167.355 80.3252ZM374.238 97.6025L374.239 97.6016L374.238 97.6025ZM243.781 89.4521C243.613 89.557 243.44 89.6732 243.259 89.8027L243.525 89.6182C243.612 89.5598 243.697 89.5045 243.781 89.4521ZM244.518 89.0518C244.437 89.0889 244.356 89.1281 244.274 89.1699C244.356 89.1281 244.437 89.0889 244.518 89.0518ZM325.33 84.2803H325.331H325.33Z"/>
+      </svg>
+    </a>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+  <div class="hero-overlay">
+    <p>
+      A copywriter and content lead with four years building voice for a high-growth DTC brand. I write copy that's clear, cohesive, and customer-first across every channel.
+    </p>
+  </div>
+  <div class="hero-headline">
+    <h1>I'm Madeline<em>.</em></h1>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <p>
+    The Copywriter Manager at <span class="accent">Nomad Goods</span>, a design-driven e-commerce brand based in Santa Barbara. I specialize in cross-channel copy for brands that take their <span class="accent">design seriously</span> and want their language to match.
+  </p>
+</section>
+
+<!-- WORK SECTIONS -->
+<section class="work-block paper" id="work">
+  <div class="work-grid">
+    <div>
+      <div class="label">Section 01</div>
+      <h2>Marketing<br/>Emails<em>.</em></h2>
+    </div>
+    <div class="body">
+      <p>
+        Marketing emails are one of Nomad's most powerful storytelling and revenue-driving channels. As Copywriter Manager, I write the copy for every send — translating product details into <strong>approachable, compelling messaging</strong> that highlights customer value.
+      </p>
+      <p>
+        Each email maintains a consistent brand voice while flexing for the moment. I work closely with design and marketing so copy and visuals tell one cohesive story.
+      </p>
+    </div>
+  </div>
+  <div class="samples">
+    <button type="button" class="sample has-image clickable"
+      data-tag="Email · 2024"
+      data-title="A new era for everyday carry"
+      data-client="Nomad Goods"
+      data-role="Copywriter Manager"
+      data-channel="Lifecycle email · Launch"
+      data-results="+38% CTR · +21% click-to-purchase"
+      data-email="images/email-01-full.jpg">
+      <div class="img" style="background-image: url('images/email-01-trail.jpg')"></div>
+      <span class="arrow" aria-hidden="true">→</span>
+      <div class="tag">Email · 2024</div>
+      <div class="name">A new era for everyday carry</div>
+      <div class="meta"><span>Launch</span><span>+38% CTR</span></div>
+    </button>
+    <button type="button" class="sample clickable"
+      data-tag="Email · 2024"
+      data-title="Last call before the year ends"
+      data-client="Nomad Goods"
+      data-role="Copywriter Manager"
+      data-channel="Lifecycle email · Holiday"
+      data-results="+52% revenue vs. prior year"
+      data-email="images/email-02-full.jpg">
+      <span class="arrow" aria-hidden="true">→</span>
+      <div class="tag">Email · 2024</div>
+      <div class="name">Last call before the year ends</div>
+      <div class="meta"><span>Holiday</span><span>+52% rev</span></div>
+    </button>
+    <button type="button" class="sample clickable"
+      data-tag="Email · 2023"
+      data-title="Built for the way you actually travel"
+      data-client="Nomad Goods"
+      data-role="Copywriter Manager"
+      data-channel="Lifecycle email · Brand story"
+      data-results="+24% open · +9% reply rate"
+      data-email="images/email-03-full.jpg">
+      <span class="arrow" aria-hidden="true">→</span>
+      <div class="tag">Email · 2023</div>
+      <div class="name">Built for the way you actually travel</div>
+      <div class="meta"><span>Story</span><span>+24% open</span></div>
+    </button>
+    <button type="button" class="sample clickable"
+      data-tag="Email · 2023"
+      data-title="Small things, big difference"
+      data-client="Nomad Goods"
+      data-role="Copywriter Manager"
+      data-channel="Lifecycle email · Accessory"
+      data-results="+18% CTR"
+      data-email="images/email-04-full.jpg">
+      <span class="arrow" aria-hidden="true">→</span>
+      <div class="tag">Email · 2023</div>
+      <div class="name">Small things, big difference</div>
+      <div class="meta"><span>Product</span><span>+18% CTR</span></div>
+    </button>
+    <button type="button" class="sample clickable"
+      data-tag="Email · 2022"
+      data-title="The case for one good charger"
+      data-client="Nomad Goods"
+      data-role="Copywriter"
+      data-channel="Lifecycle email · Education"
+      data-results="+31% engagement"
+      data-email="images/email-05-full.jpg">
+      <span class="arrow" aria-hidden="true">→</span>
+      <div class="tag">Email · 2022</div>
+      <div class="name">The case for one good charger</div>
+      <div class="meta"><span>Education</span><span>+31% eng</span></div>
+    </button>
+  </div>
+</section>
+
+<section class="work-block sage">
+  <div class="work-grid">
+    <div>
+      <div class="label">Section 02</div>
+      <h2>Web<br/>Copy<em>.</em></h2>
+    </div>
+    <div class="body">
+      <p>
+        Product pages, landing pages, and on-site moments where copy has to work hard. I write to <strong>guide the customer journey</strong> — balancing search intent, brand voice, and conversion goals across every touchpoint.
+      </p>
+      <p>
+        A few selected examples below, from hero copy to PDP details, showing how language shapes the way people experience a product.
+      </p>
+    </div>
+  </div>
+  <div class="samples">
+    <button type="button" class="sample clickable"
+      data-tag="PDP · 2024"
+      data-title="Stand collection product detail page"
+      data-client="Nomad Goods"
+      data-role="Copywriter Manager"
+      data-channel="Web · Product page"
+      data-results="Live"
+      data-email="images/web-01-full.jpg">
+      <span class="arrow" aria-hidden="true">→</span>
+      <div class="tag">PDP · 2024</div>
+      <div class="name">Stand collection product detail page</div>
+      <div class="meta"><span>Web</span><span>Live</span></div>
+    </button>
+    <button type="button" class="sample clickable"
+      data-tag="Landing · 2024"
+      data-title="Magnetic ecosystem campaign"
+      data-client="Nomad Goods"
+      data-role="Copywriter Manager"
+      data-channel="Web · Landing page"
+      data-results="Live"
+      data-email="images/web-02-full.jpg">
+      <span class="arrow" aria-hidden="true">→</span>
+      <div class="tag">Landing · 2024</div>
+      <div class="name">Magnetic ecosystem campaign</div>
+      <div class="meta"><span>Web</span><span>Live</span></div>
+    </button>
+    <button type="button" class="sample clickable"
+      data-tag="Hero · 2023"
+      data-title="Homepage refresh"
+      data-client="Nomad Goods"
+      data-role="Copywriter Manager"
+      data-channel="Web · Hero"
+      data-results="Archived"
+      data-email="images/web-03-full.jpg">
+      <span class="arrow" aria-hidden="true">→</span>
+      <div class="tag">Hero · 2023</div>
+      <div class="name">Homepage refresh</div>
+      <div class="meta"><span>Web</span><span>Archive</span></div>
+    </button>
+    <button type="button" class="sample clickable"
+      data-tag="PDP · 2023"
+      data-title="Travel pack collection"
+      data-client="Nomad Goods"
+      data-role="Copywriter"
+      data-channel="Web · Product page"
+      data-results="Live"
+      data-email="images/web-04-full.jpg">
+      <span class="arrow" aria-hidden="true">→</span>
+      <div class="tag">PDP · 2023</div>
+      <div class="name">Travel pack collection</div>
+      <div class="meta"><span>Web</span><span>Live</span></div>
+    </button>
+  </div>
+</section>
+
+<section class="work-block cream-deep">
+  <div class="work-grid">
+    <div>
+      <div class="label">Section 03</div>
+      <h2>Brand<br/>Voice<em>.</em></h2>
+    </div>
+    <div class="body">
+      <p>
+        The connective tissue across every channel. I help define and document brand voice — including <strong>tone principles, vocabulary, and do/don't guidelines</strong> — so cross-functional teams stay aligned and confident.
+      </p>
+      <p>
+        Recent voice work includes a refreshed brand guideline doc, internal training sessions, and ongoing partner collaborations.
+      </p>
+    </div>
+  </div>
+  <div class="samples">
+    <button type="button" class="sample clickable"
+      data-tag="Guideline · 2024"
+      data-title="Voice + tone refresh"
+      data-client="Nomad Goods"
+      data-role="Copywriter Manager — lead"
+      data-channel="Internal · Brand guidelines"
+      data-results="Adopted across 3 teams"
+      data-email="images/voice-01-full.jpg">
+      <span class="arrow" aria-hidden="true">→</span>
+      <div class="tag">Guideline · 2024</div>
+      <div class="name">Voice + tone refresh</div>
+      <div class="meta"><span>Internal</span><span>Excerpt</span></div>
+    </button>
+    <button type="button" class="sample clickable"
+      data-tag="Workshop · 2024"
+      data-title="Cross-team voice training"
+      data-client="Nomad Goods"
+      data-role="Facilitator"
+      data-channel="Internal · Workshop"
+      data-results="40+ attendees across teams"
+      data-email="images/voice-02-full.jpg">
+      <span class="arrow" aria-hidden="true">→</span>
+      <div class="tag">Workshop · 2024</div>
+      <div class="name">Cross-team voice training</div>
+      <div class="meta"><span>Internal</span><span>Slides</span></div>
+    </button>
+    <button type="button" class="sample clickable"
+      data-tag="Doc · 2023"
+      data-title="Editorial style guide"
+      data-client="Nomad Goods"
+      data-role="Copywriter Manager"
+      data-channel="Internal · Documentation"
+      data-results="Living doc, in use today"
+      data-email="images/voice-03-full.jpg">
+      <span class="arrow" aria-hidden="true">→</span>
+      <div class="tag">Doc · 2023</div>
+      <div class="name">Editorial style guide</div>
+      <div class="meta"><span>Internal</span><span>Excerpt</span></div>
+    </button>
+    <button type="button" class="sample clickable"
+      data-tag="Naming · 2023"
+      data-title="Product naming framework"
+      data-client="Nomad Goods"
+      data-role="Copywriter Manager"
+      data-channel="Internal · Framework"
+      data-results="Used for 12+ launches"
+      data-email="images/voice-04-full.jpg">
+      <span class="arrow" aria-hidden="true">→</span>
+      <div class="tag">Naming · 2023</div>
+      <div class="name">Product naming framework</div>
+      <div class="meta"><span>Internal</span><span>Excerpt</span></div>
+    </button>
+  </div>
+</section>
+
+<section class="work-block paper">
+  <div class="work-grid">
+    <div>
+      <div class="label">Section 04</div>
+      <h2>Social<br/>&amp; Ads<em>.</em></h2>
+    </div>
+    <div class="body">
+      <p>
+        Captions, scripts, ad copy, packaging — the everyday writing that adds up. I love the <strong>tight constraints of short-form</strong>, where every word has to earn its place.
+      </p>
+      <p>
+        A small selection of campaigns, posts, and one-off pieces I've enjoyed working on most.
+      </p>
+    </div>
+  </div>
+  <div class="samples">
+    <button type="button" class="sample clickable"
+      data-tag="Campaign · 2024"
+      data-title="Holiday social series"
+      data-client="Nomad Goods"
+      data-role="Copywriter Manager"
+      data-channel="Social · Instagram"
+      data-results="3.2M impressions across series"
+      data-email="images/social-01-full.jpg">
+      <span class="arrow" aria-hidden="true">→</span>
+      <div class="tag">Campaign · 2024</div>
+      <div class="name">Holiday social series</div>
+      <div class="meta"><span>Social</span><span>IG</span></div>
+    </button>
+    <button type="button" class="sample clickable"
+      data-tag="Ads · 2024"
+      data-title="Performance ad copy library"
+      data-client="Nomad Goods"
+      data-role="Copywriter Manager"
+      data-channel="Paid · Meta + Google"
+      data-results="Top variants beat control by 41%"
+      data-email="images/social-02-full.jpg">
+      <span class="arrow" aria-hidden="true">→</span>
+      <div class="tag">Ads · 2024</div>
+      <div class="name">Performance ad copy library</div>
+      <div class="meta"><span>Paid</span><span>Excerpts</span></div>
+    </button>
+    <button type="button" class="sample clickable"
+      data-tag="Packaging · 2023"
+      data-title="Unboxing copy refresh"
+      data-client="Nomad Goods"
+      data-role="Copywriter Manager"
+      data-channel="Print · Packaging"
+      data-results="Live across product line"
+      data-email="images/social-03-full.jpg">
+      <span class="arrow" aria-hidden="true">→</span>
+      <div class="tag">Packaging · 2023</div>
+      <div class="name">Unboxing copy refresh</div>
+      <div class="meta"><span>Print</span><span>Live</span></div>
+    </button>
+    <button type="button" class="sample clickable"
+      data-tag="Script · 2024"
+      data-title="Founder Q&amp;A video"
+      data-client="Nomad Goods"
+      data-role="Scriptwriter"
+      data-channel="Video · Brand content"
+      data-results="500K+ views"
+      data-email="images/social-04-full.jpg">
+      <span class="arrow" aria-hidden="true">→</span>
+      <div class="tag">Script · 2024</div>
+      <div class="name">Founder Q&amp;A video</div>
+      <div class="meta"><span>Video</span><span>YT</span></div>
+    </button>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="faq-grid">
+    <h2>Working<br/>Together<em>.</em></h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="q">What kind of projects do you take on?</div>
+        <div class="a">Cross-channel copy for design-led brands — email, web, brand voice work, social, packaging. I love long-running partnerships where I can really learn a brand, but one-off campaigns are great too.</div>
+      </div>
+      <div class="faq-item">
+        <div class="q">How do you work with design teams?</div>
+        <div class="a">Closely. Copy and design need to speak the same language, so I'm in the file early and often — figma, slack, async docs, whatever the team uses. I write to the layout, not just at it.</div>
+      </div>
+      <div class="faq-item">
+        <div class="q">What's your turnaround?</div>
+        <div class="a">Depends on scope, but most single-asset pieces (an email, a landing hero) move in a few business days. Larger voice or guideline work runs on a project timeline we set together.</div>
+      </div>
+      <div class="faq-item">
+        <div class="q">Do you take on freelance?</div>
+        <div class="a">Selectively, yes. The best fit is design-driven brands with a clear voice they want to sharpen. Send a note with what you're working on and I'll get back to you within a couple of days.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <h3>Let's stay <em>in touch.</em></h3>
+  <div class="contact-grid">
+    <div>
+      <div class="label">Email</div>
+      <div class="value"><a href="mailto:hello@madeline.com">hello@madeline.com</a></div>
+    </div>
+    <div>
+      <div class="label">LinkedIn</div>
+      <div class="value"><a target=_new href="https://www.linkedin.com/in/madelinexaviermyers/">@madelinexaviermyers</a></div>
+    </div>
+    <div>
+      <div class="label">Based in</div>
+      <div class="value">Santa Barbara, CA</div>
+    </div>
+  </div>
+  <div class="baseline">
+    <span class="logo-mini" aria-label="Madeline">
+      <svg viewBox="0 0 386 267" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M115.872 22.9824C122.396 22.9923 117.39 35.1784 116.663 38.6777C114.734 47.9647 112.55 56.696 112.483 66.2578C112.365 83.0989 113.62 99.8725 111.818 116.668C111.701 120.094 112.092 123.555 111.898 126.978C109.874 162.784 111.146 198.796 111.574 234.64C111.861 238.783 111.713 243.278 112.223 247.378C113.031 253.876 114.836 259.053 114.574 265.734L113.895 266.348C103.853 267.482 105.891 218.373 105.822 211.392C105.613 196.398 105.511 181.403 105.518 166.409C105.628 150.509 106.376 134.628 106.436 118.695C106.472 109.113 107.807 100.42 107.007 90.5C106.503 84.2434 106.975 79.1057 105.99 72.5439C100.134 82.8484 99.9571 93.2008 97.374 103.994C94.2392 116.3 90.1281 128.339 87.3252 140.732C86.2553 145.464 85.4602 150.226 84.7412 155.028C84.1614 158.903 83.6691 162.656 82.4316 166.423C81.3716 169.649 79.4587 172.854 77.0117 175.277C75.8881 176.39 73.9396 177.649 72.2021 177.397C52.181 171.914 49.9541 145.036 46.7451 128.991L41.8457 105.655C41.4181 103.592 40.3182 97.1514 39.2324 95.8711C37.4731 97.4488 35.1371 120.285 34.7021 124.172C33.4646 137.784 29.6825 151.588 26.334 164.859L19.3887 193.006C16.0055 206.262 11.3352 220.427 10.6104 234.104C10.2226 241.412 10.681 248.611 4.04004 253.248C0.519555 253.452 0.37903 248.371 0 245.801C3.7954 240.628 4.2495 230.924 5.95508 224.601C9.06474 213.082 12.0786 201.527 15.0254 189.965L22.9756 159.621C24.0003 155.829 26.1227 149.795 26.7705 146.25C28.6588 135.92 31.8434 123.343 32.4258 112.92C32.8395 105.517 34.1928 95.1419 34.0869 87.9932C33.9182 76.6321 30.7738 64.2733 33.3857 52.416C33.6052 51.4192 34.2925 51.2231 35.0596 50.8281C38.9288 51.3824 40.8322 60.6673 41.4453 64.1006C45.0907 84.5128 46.6853 105.148 51.6572 125.337C52.404 128.703 52.5946 132.268 53.4141 135.608C56.385 147.721 58.0423 162.13 69.0996 169.853C72.7799 172.423 74.3126 171.733 75.9492 167.91C80.6244 156.991 81.6227 145.055 85.4131 133.807C92.7363 114.448 96.6488 95.0473 101.468 75.0293C102.613 70.9785 104.629 67.111 105.659 63.0273C108.973 49.887 107.276 34.2281 115.872 22.9824ZM382.421 0C387.889 1.73929 385.201 13.7861 383.997 17.8125C380.998 27.8348 380.676 40.7867 378.019 50.3125C373.606 66.1192 375.27 79.7601 374.751 95.332L374.694 96.8447L374.757 98.2773C375.323 113.042 373.277 126.716 373.934 141.577C374.953 164.669 374.098 187.855 380.935 210.255C381.985 213.763 388.16 216.832 384.307 221.025C377.662 226.912 375.133 213.031 374.062 209.236C368.049 187.926 369.229 165.402 368.018 143.438C367.198 128.551 370.57 111.78 369.222 97.0215C369.041 89.3795 369.084 81.7336 369.358 74.0947C366.014 79.5203 364.826 85.6932 362.827 91.668C357.582 107.339 353.212 123.391 346.202 138.402C344.391 142.282 341.317 148.365 336.863 149.752C335.895 150.053 334.954 149.961 334.092 149.415C329.607 146.565 325.687 121.07 324.919 114.897C323.653 104.706 323.692 94.604 321.567 84.4727C321.686 84.4558 321.801 84.4416 321.913 84.4287H321.912C321.801 84.4416 321.685 84.4558 321.566 84.4727C320.21 79.0197 319.865 74.3886 318.721 69.4385C316.964 75.5895 316.58 81.0059 315.306 87.1123C307.575 124.239 295.638 160.393 288.386 197.623C287.261 203.416 285.43 209.162 284.497 215.018C283.117 221.806 282.176 230.307 280.436 236.856C280.503 238.581 281.089 242.959 281.148 245.904C281.156 246.306 281.155 246.681 281.141 247.019C281.136 247.131 281.13 247.24 281.122 247.344C281.092 247.761 281.037 248.105 280.953 248.354C280.932 248.415 280.91 248.471 280.885 248.521C280.86 248.57 280.833 248.613 280.804 248.649C280.696 248.596 280.587 248.531 280.479 248.453C280.316 248.336 280.153 248.193 279.99 248.028C279.882 247.919 279.774 247.799 279.667 247.672C279.506 247.48 279.345 247.271 279.188 247.047C278.242 245.706 277.376 243.872 276.793 242.58C276.663 242.293 276.548 242.033 276.448 241.811H276.449L276.291 241.265C273.13 229.727 279.333 212.889 281.494 201.295C284.227 186.652 288.508 172.205 292.683 157.929C293.137 156.165 293.832 154.463 294.251 152.689C302.354 118.457 314.541 84.2832 314.153 48.6689C314.063 40.4052 311.699 32.2645 310.111 24.252C309.845 22.9085 309.367 19.9535 309.669 18.3994C314.459 8.88655 318.713 25.039 318.96 28.6621C320.238 47.3699 323.951 65.6826 326.318 84.1514C328.584 95.5019 328.459 101.975 329.858 112.813C331.176 122.547 333.492 132.119 336.77 141.379C346.386 132.241 355.955 94.1176 361.165 81.0039C368.48 62.5998 372.036 46.1014 374.278 26.583C374.839 21.7166 376.976 0.985738 382.421 0ZM167.355 80.3252C169.588 81.0261 171.258 83.082 172.042 85.1836C174.236 90.9839 174.405 97.0669 176.493 102.947C180.234 113.46 185.447 123.39 189.314 133.855C191.888 140.814 194.753 147.212 198.332 153.693C201.781 147.838 204.154 141.3 207.086 135.157C207.617 134.104 208.281 132.998 208.872 131.964C212.975 123.267 217.865 114.312 222.312 105.766C226.985 96.8099 230.722 90.572 238.234 83.7891C246.004 76.7715 251.038 83.323 247.09 88.4326H247.091C243.037 95.0694 237.644 104.489 231.809 109.525C235.556 104.217 239.525 98.7723 242.925 93.2402C243.382 92.4947 243.136 90.9635 242.686 90.2324C240.263 90.7597 234.125 97.0713 232.627 99.4854C228.057 106.835 223.947 114.062 220.01 121.762C217.76 125.853 216.237 130.886 213.931 134.901C209.786 142.11 205.701 149.84 202.526 157.512C201.25 160.601 204.491 171.1 205.528 174.529H205.529C206.4 176.157 207.289 177.764 208.189 179.357C209.99 182.545 211.835 185.684 213.666 188.852C214.124 189.644 214.581 190.438 215.036 191.234C215.491 192.031 215.945 192.831 216.396 193.635C217.969 196.528 219.191 199.66 220.545 202.704C220.68 203.008 220.817 203.312 220.955 203.614C221.232 204.219 221.517 204.819 221.812 205.411C222.256 206.3 222.724 207.171 223.23 208.018C225.821 212.348 228.476 216.639 231.066 220.967C231.807 222.203 232.542 223.442 233.269 224.687C233.995 225.93 234.713 227.179 235.42 228.435C236.834 230.945 238.204 233.481 239.503 236.057C239.828 236.701 240.148 237.347 240.464 237.996C240.622 238.322 240.746 238.703 240.83 239.109C240.872 239.312 240.904 239.522 240.925 239.734C240.946 239.947 240.956 240.163 240.954 240.378C240.953 240.593 240.94 240.807 240.914 241.018C240.838 241.648 240.65 242.241 240.33 242.699C240.225 242.725 240.118 242.738 240.011 242.741C239.957 242.743 239.903 242.742 239.849 242.738C238.278 242.634 236.543 240.401 235.96 239.149C230.722 227.93 224.257 217.662 217.953 207.04C214.153 200.639 211.115 193.416 207.708 186.773C206.214 183.719 203.746 180.219 202.399 177.311C200.578 173.659 199.26 170.908 196.673 167.698C193.034 174.973 189.55 182.264 185.897 189.55C183.936 193.546 181.44 197.142 179.499 201.156C173.29 213.989 168.892 227.782 162.451 240.425C162.033 241.244 161.077 241.652 160.216 241.736C155.129 237.42 163.063 225.019 164.986 220.812C169.729 210.197 174.795 199.732 180.181 189.427C184.027 182.164 191.642 168.828 194.609 161.437L194.768 161.036C193.973 158.454 192.587 155.713 191.617 153.115C188.727 145.406 185.616 137.372 182.188 129.898C178.813 122.536 175.045 115.508 171.951 107.986C169.209 101.32 167.419 94.5207 165.274 87.6533C164.54 85.273 164.016 80.7477 167.355 80.3252ZM374.238 97.6025L374.239 97.6016L374.238 97.6025ZM243.781 89.4521C243.613 89.557 243.44 89.6732 243.259 89.8027L243.525 89.6182C243.612 89.5598 243.697 89.5045 243.781 89.4521ZM244.518 89.0518C244.437 89.0889 244.356 89.1281 244.274 89.1699C244.356 89.1281 244.437 89.0889 244.518 89.0518ZM325.33 84.2803H325.331H325.33Z"/>
+      </svg>
+    </span>
+    <span>© 2026 — Portfolio</span>
+  </div>
+</section>
+
+<!-- MODAL -->
+<div class="modal-backdrop" id="modal" aria-hidden="true">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <button class="modal-close" type="button" aria-label="Close" id="modal-close">×</button>
+    <div class="modal-body">
+      <div class="modal-tag" id="modal-tag"></div>
+      <h2 class="modal-title" id="modal-title"></h2>
+      <div class="modal-grid">
+        <dl class="modal-meta">
+          <dt>Client</dt>
+          <dd id="modal-client"></dd>
+          <dt>Role</dt>
+          <dd id="modal-role"></dd>
+          <dt>Channel</dt>
+          <dd id="modal-channel"></dd>
+          <dt>Results</dt>
+          <dd id="modal-results"></dd>
+        </dl>
+        <div class="modal-email" id="modal-email"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function() {
+    var modal = document.getElementById('modal');
+    var modalEmail = document.getElementById('modal-email');
+    var fields = {
+      tag: document.getElementById('modal-tag'),
+      title: document.getElementById('modal-title'),
+      client: document.getElementById('modal-client'),
+      role: document.getElementById('modal-role'),
+      channel: document.getElementById('modal-channel'),
+      results: document.getElementById('modal-results')
+    };
+    var lastFocused = null;
+
+    function openModal(card) {
+      lastFocused = card;
+      Object.keys(fields).forEach(function(k) {
+        var v = card.dataset[k] || '';
+        fields[k].textContent = v;
+        if (fields[k].tagName === 'DD') {
+          var dt = fields[k].previousElementSibling;
+          if (dt && dt.tagName === 'DT') dt.style.display = v ? '' : 'none';
+          fields[k].style.display = v ? '' : 'none';
+        }
+      });
+      var emailImg = card.dataset.email;
+      if (emailImg) {
+        modalEmail.innerHTML = '<img src="' + emailImg + '" alt="" />';
+      } else {
+        modalEmail.innerHTML = '<div class="modal-email-placeholder">Email screenshot</div>';
+      }
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('modal-open');
+      modal.scrollTop = 0;
+      setTimeout(function() {
+        document.getElementById('modal-close').focus();
+      }, 50);
+    }
+
+    function closeModal() {
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('modal-open');
+      if (lastFocused) lastFocused.focus();
+    }
+
+    document.querySelectorAll('.sample.clickable').forEach(function(card) {
+      card.addEventListener('click', function() { openModal(card); });
+    });
+    document.getElementById('modal-close').addEventListener('click', closeModal);
+    modal.addEventListener('click', function(e) {
+      if (e.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+    });
+  })();
+</script>
+
+</body>
+</html>
