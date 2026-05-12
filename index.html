@@ -20,6 +20,7 @@
     --rust: #b85842;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
+  a { color: inherit; text-decoration: none; }
   html { scroll-behavior: smooth; }
   body {
     background: var(--cream);
@@ -77,7 +78,7 @@
     pointer-events: none;
   }
   .hero-star.one {
-    top: 13%; right: 12%;
+    top: 22%; right: 12%;
     width: 110px; height: 110px;
     transform: rotate(8deg);
   }
@@ -120,7 +121,7 @@
   /* about */
   .about {
     background: var(--cream);
-    padding: 140px 56px 160px;
+    padding: 70px 56px 80px;
   }
   .about p {
     font-family: 'Fraunces', serif;
@@ -135,6 +136,33 @@
     font-style: italic;
     font-weight: 300;
     color: var(--sage);
+  }
+
+  /* section nav */
+  .section-nav {
+    background: var(--cream);
+    padding: 8px 56px 48px;
+    display: flex;
+    justify-content: space-around;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .section-nav a {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: -0.005em;
+    padding: 10px 22px;
+    border-radius: 999px;
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid rgba(26,26,26,0.35);
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  }
+  .section-nav a:hover {
+    background: var(--ink);
+    color: var(--cream);
+    border-color: var(--ink);
   }
 
   /* work blocks */
@@ -152,6 +180,9 @@
   }
   .work-block.cream-deep {
     background: var(--cream-deep);
+  }
+  .work-block.cream {
+    background: var(--cream);
   }
   .work-block .label {
     font-family: 'Inter', sans-serif;
@@ -229,6 +260,26 @@
     font: inherit;
     scroll-snap-align: start;
   }
+  .sample:has(.sample-thumb) {
+    padding: 0;
+    justify-content: flex-start;
+  }
+  .sample-thumb {
+    flex: 0 0 46%;
+    background-size: cover;
+    background-position: center top;
+    background-color: rgba(26,26,26,0.08);
+    border-bottom: 1px solid rgba(26,26,26,0.08);
+  }
+  .work-block.sage .sample-thumb {
+    border-bottom-color: rgba(236,231,220,0.18);
+  }
+  .sample-content {
+    flex: 1;
+    padding: 24px 28px 28px;
+    display: flex; flex-direction: column; justify-content: space-between;
+    position: relative;
+  }
   .work-block.sage .sample {
     background: rgba(236,231,220,0.08);
     border-color: rgba(236,231,220,0.18);
@@ -279,7 +330,7 @@
     outline: 2px solid var(--rust);
     outline-offset: 4px;
   }
-  .sample .arrow {
+  .sample > .arrow {
     position: absolute;
     top: 28px; right: 28px;
     width: 28px; height: 28px;
@@ -290,7 +341,25 @@
     opacity: 0.6;
     transition: transform 0.3s ease, opacity 0.3s ease;
   }
-  .sample.clickable:hover .arrow { opacity: 1; transform: rotate(-45deg); }
+  .sample.clickable:hover > .arrow { opacity: 1; transform: rotate(-45deg); }
+  .sample-content > .arrow {
+    position: absolute;
+    top: 0; right: 28px;
+    transform: translateY(-50%);
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    border: 1px solid currentColor;
+    background: var(--paper);
+    color: var(--ink);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; line-height: 1;
+    opacity: 0.85;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    z-index: 2;
+  }
+  .work-block.sage .sample-content > .arrow { background: var(--sage); color: var(--cream); border-color: var(--cream); }
+  .work-block.cream-deep .sample-content > .arrow { background: var(--cream-deep); }
+  .sample.clickable:hover .sample-content > .arrow { opacity: 1; transform: translateY(-50%) rotate(-45deg); }
 
   /* modal */
   .modal-backdrop {
@@ -356,6 +425,17 @@
     font-size: clamp(40px, 5vw, 64px);
     line-height: 1.05;
     letter-spacing: -0.022em;
+    margin-bottom: 16px;
+    max-width: 760px;
+  }
+  .modal-preview {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: clamp(20px, 2.2vw, 28px);
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    color: var(--ink-soft);
     margin-bottom: 32px;
     max-width: 760px;
   }
@@ -367,6 +447,7 @@
     border-top: 1px solid rgba(26,26,26,0.2);
     padding-top: 40px;
   }
+  .modal-grid[hidden], .modal-gallery[hidden] { display: none; }
   .modal-meta {
     position: sticky;
     top: 24px;
@@ -386,6 +467,74 @@
     margin-bottom: 24px;
   }
   .modal-meta dd:last-child { margin-bottom: 0; }
+  .modal-gallery {
+    display: flex; flex-direction: column;
+    gap: 56px;
+    border-top: 1px solid rgba(26,26,26,0.2);
+    padding-top: 40px;
+  }
+  .ig-post {
+    display: grid;
+    grid-template-columns: 1fr 1.15fr;
+    gap: 48px;
+    align-items: start;
+  }
+  .ig-post-img {
+    aspect-ratio: 4/5;
+    background: var(--cream-deep);
+    background-size: cover;
+    background-position: top center;
+  }
+  .ig-post-caption {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    white-space: pre-line;
+  }
+  .ig-post-caption .hashtags {
+    display: block;
+    margin-top: 14px;
+    font-size: 13px;
+    color: var(--stone);
+  }
+  .product-tile {
+    display: flex; flex-direction: column;
+    gap: 18px;
+  }
+  .product-tile-header {
+    display: flex; justify-content: space-between; align-items: baseline;
+    gap: 16px; flex-wrap: wrap;
+  }
+  .product-tile-header h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(22px, 2.2vw, 28px);
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+  }
+  .product-tile-header a {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: var(--ink);
+    border-bottom: 1px solid currentColor;
+  }
+  .product-tile-images {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 16px;
+    align-items: start;
+  }
+  .product-tile-images img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  @media (max-width: 720px) {
+    .ig-post { grid-template-columns: 1fr; gap: 20px; }
+    .modal-gallery { gap: 40px; padding-top: 32px; }
+  }
   .modal-email {
     background: var(--cream-deep);
     width: 100%;
@@ -416,8 +565,8 @@
 
   /* faq */
   .faq {
-    background: var(--sage);
-    color: var(--cream);
+    background: var(--paper);
+    color: var(--ink);
     padding: 140px 56px;
   }
   .faq-grid {
@@ -436,7 +585,7 @@
   .faq-list { display: flex; flex-direction: column; }
   .faq-item {
     padding: 32px 0;
-    border-bottom: 1px solid var(--rust);
+    border-bottom: 1px solid var(--sage);
   }
   .faq-item:first-child { padding-top: 8px; }
   .faq-item:last-child { border-bottom: none; }
@@ -451,13 +600,14 @@
     font-family: 'Inter', sans-serif;
     font-size: 15px;
     line-height: 1.65;
-    color: rgba(236,231,220,0.78);
+    color: var(--ink-soft);
     max-width: 620px;
   }
 
   /* contact */
   .contact {
-    background: var(--cream);
+    background: var(--sage);
+    color: var(--cream);
     padding: 160px 56px 80px;
   }
   .contact h3 {
@@ -473,7 +623,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 40px;
-    border-top: 1px solid rgba(26,26,26,0.2);
+    border-top: 1px solid rgba(236,231,220,0.25);
     padding-top: 40px;
   }
   .contact-grid .label {
@@ -481,7 +631,7 @@
     font-size: 11px;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--ink-soft);
+    color: rgba(236,231,220,0.7);
     margin-bottom: 8px;
   }
   .contact-grid .value {
@@ -490,26 +640,26 @@
     letter-spacing: -0.01em;
   }
   .contact-grid .value a {
-    color: var(--ink);
+    color: var(--cream);
     text-decoration: none;
     border-bottom: 1px solid transparent;
     transition: border-color 0.2s ease;
   }
-  .contact-grid .value a:hover { border-bottom-color: var(--ink); }
+  .contact-grid .value a:hover { border-bottom-color: var(--cream); }
   .baseline {
     margin-top: 80px;
     padding-top: 24px;
-    border-top: 1px solid rgba(26,26,26,0.2);
+    border-top: 1px solid rgba(236,231,220,0.25);
     display: flex; justify-content: space-between;
     font-family: 'Inter', sans-serif;
     font-size: 12px;
-    color: var(--ink-soft);
+    color: rgba(236,231,220,0.7);
     letter-spacing: 0.04em;
   }
   .baseline .logo-mini {
     display: inline-flex;
     align-items: center;
-    color: var(--ink);
+    color: var(--cream);
   }
   .baseline .logo-mini svg {
     height: 22px;
@@ -519,6 +669,8 @@
 
   @media (max-width: 880px) {
     .wrap, nav.top, .about, .work-block, .faq, .contact { padding-left: 24px; padding-right: 24px; }
+    .work-block, .faq { padding-top: 40px; padding-bottom: 40px; }
+    .section-nav { display: none; }
     .hero-overlay { padding: 140px 24px 0; }
     .hero-headline { padding: 0 24px; }
     nav.top { padding: 24px; }
@@ -526,6 +678,8 @@
     .work-grid, .faq-grid, .contact-grid { grid-template-columns: 1fr; gap: 32px; }
     .samples { grid-template-columns: 1fr 1fr; }
     .hero { height: 50vh; min-height: 440px; }
+    .hero-headline { bottom: -7px; }
+    .hero-headline h1 { font-size: clamp(56px, 16vw, 96px); }
   }
 </style>
 </head>
@@ -547,29 +701,31 @@
     </a>
     <ul>
       <li><a href="#about">About</a></li>
-      <li><a href="#work">Work</a></li>
+      <li><a href="#emails">Work</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
-  <div class="hero-overlay">
-    <p>
-      A copywriter and content lead with four years building voice for a high-growth DTC brand. I write copy that's clear, cohesive, and customer-first across every channel.
-    </p>
-  </div>
   <div class="hero-headline">
-    <h1>I'm Madeline<em>.</em></h1>
+    <h1>I'm Madeline!</h1>
   </div>
 </section>
 
 <!-- ABOUT -->
 <section class="about" id="about">
   <p>
-    The Copywriter Manager at <span class="accent">Nomad Goods</span>, a design-driven e-commerce brand based in Santa Barbara. I specialize in cross-channel copy for brands that take their <span class="accent">design seriously</span> and want their language to match.
+    And I'm the Copywriter Manager at <span class="accent"><a href="https://nomadgoods.com" target="_blank" rel="noopener">Nomad Goods</a></span>, a design-driven e-commerce brand based in Santa Barbara. I specialize in <span class="accent">cross-channel storytelling</span> that's clear, cohesive, and grounded in thoughtful design.
   </p>
 </section>
 
+<!-- SECTION NAV -->
+<nav class="section-nav" aria-label="Work sections">
+  <a href="#emails">Marketing Emails</a>
+  <a href="#web">Web Copy</a>
+  <a href="#social">Social &amp; Ads</a>
+</nav>
+
 <!-- WORK SECTIONS -->
-<section class="work-block paper" id="work">
+<section class="work-block paper" id="emails">
   <div class="work-grid">
     <div>
       <div class="label">Section 01</div>
@@ -577,84 +733,103 @@
     </div>
     <div class="body">
       <p>
-        Marketing emails are one of Nomad's most powerful storytelling and revenue-driving channels. As Copywriter Manager, I write the copy for every send — translating product details into <strong>approachable, compelling messaging</strong> that highlights customer value.
+        Marketing emails are one of Nomad's most powerful storytelling and revenue-driving channels. As Copywriter Manager, I write the copy for every send, translating complex product details into <strong>approachable, compelling messaging</strong> that highlights customer value.
       </p>
       <p>
-        Each email maintains a consistent brand voice while flexing for the moment. I work closely with design and marketing so copy and visuals tell one cohesive story.
+        I work closely with design and marketing to ensure copy and visuals work hand-in-hand, and we frequently iterate on email design to boost key performance indicators.
       </p>
     </div>
   </div>
   <div class="samples">
-    <button type="button" class="sample has-image clickable"
-      data-tag="Email · 2024"
-      data-title="A new era for everyday carry"
-      data-client="Nomad Goods"
-      data-role="Copywriter Manager"
-      data-channel="Lifecycle email · Launch"
-      data-results="+38% CTR · +21% click-to-purchase"
-      data-email="images/email-01-full.jpg">
-      <div class="img" style="background-image: url('images/email-01-trail.jpg')"></div>
-      <span class="arrow" aria-hidden="true">→</span>
-      <div class="tag">Email · 2024</div>
-      <div class="name">A new era for everyday carry</div>
-      <div class="meta"><span>Launch</span><span>+38% CTR</span></div>
+    <button type="button" class="sample clickable"
+      data-tag="May 2026"
+      data-title="Introducing Starlink Cable."
+      data-preview="Stay connected wherever you roam."
+      data-channel="Product Launch Email"
+      data-open="70%"
+      data-click="1.4%"
+      data-revenue="$13,400"
+      data-email="images/email/0505_Starlink Cable Launch.jpg">
+      <div class="sample-thumb" style="background-image: url('images/email/0505_Starlink Cable Launch.jpg')"></div>
+      <div class="sample-content">
+        <span class="arrow" aria-hidden="true">→</span>
+        <div class="tag">May 2026</div>
+        <div class="name">Unveiling a brand new product.</div>
+        <div class="meta"><span>Product Launch Email</span></div>
+      </div>
     </button>
     <button type="button" class="sample clickable"
-      data-tag="Email · 2024"
-      data-title="Last call before the year ends"
-      data-client="Nomad Goods"
-      data-role="Copywriter Manager"
-      data-channel="Lifecycle email · Holiday"
-      data-results="+52% revenue vs. prior year"
-      data-email="images/email-02-full.jpg">
-      <span class="arrow" aria-hidden="true">→</span>
-      <div class="tag">Email · 2024</div>
-      <div class="name">Last call before the year ends</div>
-      <div class="meta"><span>Holiday</span><span>+52% rev</span></div>
+      data-tag="April 2026"
+      data-title="It's a bestseller for a reason."
+      data-preview="Genuine leather meets modern design."
+      data-channel="Product Spotlight Email"
+      data-open="84%"
+      data-click="1.3%"
+      data-revenue="$20,600"
+      data-email="images/email/0409_Traditional Camino.jpg">
+      <div class="sample-thumb" style="background-image: url('images/email/0409_Traditional Camino.jpg')"></div>
+      <div class="sample-content">
+        <span class="arrow" aria-hidden="true">→</span>
+        <div class="tag">April 2026</div>
+        <div class="name">Customer feedback in action.</div>
+        <div class="meta"><span>Product Spotlight Email</span></div>
+      </div>
     </button>
     <button type="button" class="sample clickable"
-      data-tag="Email · 2023"
-      data-title="Built for the way you actually travel"
-      data-client="Nomad Goods"
-      data-role="Copywriter Manager"
-      data-channel="Lifecycle email · Brand story"
-      data-results="+24% open · +9% reply rate"
-      data-email="images/email-03-full.jpg">
-      <span class="arrow" aria-hidden="true">→</span>
-      <div class="tag">Email · 2023</div>
-      <div class="name">Built for the way you actually travel</div>
-      <div class="meta"><span>Story</span><span>+24% open</span></div>
+      data-tag="March 2026"
+      data-title="This Apple Watch band does it all."
+      data-preview="Plus, win a Neo, Apple Watch, and more 🎁"
+      data-channel="Product Spotlight Email"
+      data-open="76%"
+      data-click="1.3%"
+      data-revenue="$27,500"
+      data-email="images/email/0326_Sport Band.jpg">
+      <div class="sample-thumb" style="background-image: url('images/email/0326_Sport Band.jpg')"></div>
+      <div class="sample-content">
+        <span class="arrow" aria-hidden="true">→</span>
+        <div class="tag">March 2026</div>
+        <div class="name">A product that elevates your lifestyle.</div>
+        <div class="meta"><span>Product Spotlight Email</span></div>
+      </div>
     </button>
     <button type="button" class="sample clickable"
-      data-tag="Email · 2023"
-      data-title="Small things, big difference"
-      data-client="Nomad Goods"
-      data-role="Copywriter Manager"
-      data-channel="Lifecycle email · Accessory"
-      data-results="+18% CTR"
-      data-email="images/email-04-full.jpg">
-      <span class="arrow" aria-hidden="true">→</span>
-      <div class="tag">Email · 2023</div>
-      <div class="name">Small things, big difference</div>
-      <div class="meta"><span>Product</span><span>+18% CTR</span></div>
+      data-tag="January 2026"
+      data-title="See what's new in Open Box."
+      data-preview="Lightly used gear, unbeatable prices."
+      data-channel="Branding Email"
+      data-open="75%"
+      data-click="2.5%"
+      data-revenue="$27,700"
+      data-email="images/email/0115_Open Box.jpg">
+      <div class="sample-thumb" style="background-image: url('images/email/0115_Open Box.jpg')"></div>
+      <div class="sample-content">
+        <span class="arrow" aria-hidden="true">→</span>
+        <div class="tag">January 2026</div>
+        <div class="name">Doing our part for the environment.</div>
+        <div class="meta"><span>Branding Email</span></div>
+      </div>
     </button>
     <button type="button" class="sample clickable"
-      data-tag="Email · 2022"
-      data-title="The case for one good charger"
-      data-client="Nomad Goods"
-      data-role="Copywriter"
-      data-channel="Lifecycle email · Education"
-      data-results="+31% engagement"
-      data-email="images/email-05-full.jpg">
-      <span class="arrow" aria-hidden="true">→</span>
-      <div class="tag">Email · 2022</div>
-      <div class="name">The case for one good charger</div>
-      <div class="meta"><span>Education</span><span>+31% eng</span></div>
+      data-tag="December 2025"
+      data-title="Introducing: The Gift Shop 🎁"
+      data-preview="There's something for everyone."
+      data-channel="Holiday Campaign Email"
+      data-open="70%"
+      data-click="0.87%"
+      data-revenue="$43,800"
+      data-email="images/email/1209_The Gift Shop.jpg">
+      <div class="sample-thumb" style="background-image: url('images/email/1209_The Gift Shop.jpg')"></div>
+      <div class="sample-content">
+        <span class="arrow" aria-hidden="true">→</span>
+        <div class="tag">December 2025</div>
+        <div class="name">Holiday shopping, made simple.</div>
+        <div class="meta"><span>Holiday Campaign Email</span></div>
+      </div>
     </button>
   </div>
 </section>
 
-<section class="work-block sage">
+<section class="work-block sage" id="web">
   <div class="work-grid">
     <div>
       <div class="label">Section 02</div>
@@ -662,207 +837,97 @@
     </div>
     <div class="body">
       <p>
-        Product pages, landing pages, and on-site moments where copy has to work hard. I write to <strong>guide the customer journey</strong> — balancing search intent, brand voice, and conversion goals across every touchpoint.
-      </p>
-      <p>
-        A few selected examples below, from hero copy to PDP details, showing how language shapes the way people experience a product.
+        Product pages, collection pages, blog posts, and more. These examples show how messaging shapes customer experience and builds brand identity.
       </p>
     </div>
   </div>
   <div class="samples">
     <button type="button" class="sample clickable"
-      data-tag="PDP · 2024"
-      data-title="Stand collection product detail page"
-      data-client="Nomad Goods"
-      data-role="Copywriter Manager"
-      data-channel="Web · Product page"
-      data-results="Live"
-      data-email="images/web-01-full.jpg">
+      data-tag="Web · Live"
+      data-title="Homepage"
+      data-updated="May 2026"
+      data-url="https://nomadgoods.com/"
+      data-email="images/webcopy/web-homepage.png">
       <span class="arrow" aria-hidden="true">→</span>
-      <div class="tag">PDP · 2024</div>
-      <div class="name">Stand collection product detail page</div>
+      <div class="tag">Updated May 2026</div>
+      <div class="name">Homepage</div>
       <div class="meta"><span>Web</span><span>Live</span></div>
     </button>
     <button type="button" class="sample clickable"
-      data-tag="Landing · 2024"
-      data-title="Magnetic ecosystem campaign"
-      data-client="Nomad Goods"
-      data-role="Copywriter Manager"
-      data-channel="Web · Landing page"
-      data-results="Live"
-      data-email="images/web-02-full.jpg">
+      data-tag="Web · Live"
+      data-title="Product collection page"
+      data-updated="May 2026"
+      data-url="https://nomadgoods.com/collections/bands"
+      data-email="images/webcopy/web-bands.png">
       <span class="arrow" aria-hidden="true">→</span>
-      <div class="tag">Landing · 2024</div>
-      <div class="name">Magnetic ecosystem campaign</div>
+      <div class="tag">Updated May 2026</div>
+      <div class="name">Product collection page</div>
       <div class="meta"><span>Web</span><span>Live</span></div>
     </button>
     <button type="button" class="sample clickable"
-      data-tag="Hero · 2023"
-      data-title="Homepage refresh"
-      data-client="Nomad Goods"
-      data-role="Copywriter Manager"
-      data-channel="Web · Hero"
-      data-results="Archived"
-      data-email="images/web-03-full.jpg">
+      data-tag="Web · Live"
+      data-title="Product page"
+      data-updated="November 2025"
+      data-url="https://nomadgoods.com/products/tracking-card-pro"
+      data-email="images/webcopy/web-tracking-card.png">
       <span class="arrow" aria-hidden="true">→</span>
-      <div class="tag">Hero · 2023</div>
-      <div class="name">Homepage refresh</div>
-      <div class="meta"><span>Web</span><span>Archive</span></div>
+      <div class="tag">Updated November 2025</div>
+      <div class="name">Product page</div>
+      <div class="meta"><span>Web</span><span>Live</span></div>
     </button>
     <button type="button" class="sample clickable"
-      data-tag="PDP · 2023"
-      data-title="Travel pack collection"
-      data-client="Nomad Goods"
-      data-role="Copywriter"
-      data-channel="Web · Product page"
-      data-results="Live"
-      data-email="images/web-04-full.jpg">
+      data-tag="Web · Live"
+      data-title="Blog homepage"
+      data-updated="May 2026"
+      data-url="https://nomadgoods.com/the-nomadic"
+      data-email="images/webcopy/web-blog.png">
       <span class="arrow" aria-hidden="true">→</span>
-      <div class="tag">PDP · 2023</div>
-      <div class="name">Travel pack collection</div>
+      <div class="tag">Updated May 2026</div>
+      <div class="name">Blog homepage</div>
+      <div class="meta"><span>Web</span><span>Live</span></div>
+    </button>
+    <button type="button" class="sample clickable"
+      data-tag="Web · Live"
+      data-title="Evergreen educational page"
+      data-updated="September 2025"
+      data-url="https://nomadgoods.com/pages/horween-leather"
+      data-email="images/webcopy/web-evergreen.png">
+      <span class="arrow" aria-hidden="true">→</span>
+      <div class="tag">Updated September 2025</div>
+      <div class="name">Evergreen educational page</div>
       <div class="meta"><span>Web</span><span>Live</span></div>
     </button>
   </div>
 </section>
 
-<section class="work-block cream-deep">
+<section class="work-block cream" id="social">
   <div class="work-grid">
     <div>
       <div class="label">Section 03</div>
-      <h2>Brand<br/>Voice<em>.</em></h2>
+      <h2>Socials<br/>&amp; Ads<em>.</em></h2>
     </div>
     <div class="body">
       <p>
-        The connective tissue across every channel. I help define and document brand voice — including <strong>tone principles, vocabulary, and do/don't guidelines</strong> — so cross-functional teams stay aligned and confident.
-      </p>
-      <p>
-        Recent voice work includes a refreshed brand guideline doc, internal training sessions, and ongoing partner collaborations.
+        Social posts, video scripts, ads, and more. These examples of shorter form copy showcase my ability to <strong>adjust tone, voice, and style</strong> across platforms.
       </p>
     </div>
   </div>
   <div class="samples">
     <button type="button" class="sample clickable"
-      data-tag="Guideline · 2024"
-      data-title="Voice + tone refresh"
-      data-client="Nomad Goods"
-      data-role="Copywriter Manager — lead"
-      data-channel="Internal · Brand guidelines"
-      data-results="Adopted across 3 teams"
-      data-email="images/voice-01-full.jpg">
+      data-tag="Instagram · Live"
+      data-title="Top-performing Instagram posts"
+      data-gallery="instagram">
       <span class="arrow" aria-hidden="true">→</span>
-      <div class="tag">Guideline · 2024</div>
-      <div class="name">Voice + tone refresh</div>
-      <div class="meta"><span>Internal</span><span>Excerpt</span></div>
+      <div class="name">Top-performing Instagram posts</div>
+      <div class="meta"><span>Instagram</span><span>Live</span></div>
     </button>
     <button type="button" class="sample clickable"
-      data-tag="Workshop · 2024"
-      data-title="Cross-team voice training"
-      data-client="Nomad Goods"
-      data-role="Facilitator"
-      data-channel="Internal · Workshop"
-      data-results="40+ attendees across teams"
-      data-email="images/voice-02-full.jpg">
+      data-tag="Paid Social · Live"
+      data-title="Top-performing paid ads"
+      data-gallery="ads">
       <span class="arrow" aria-hidden="true">→</span>
-      <div class="tag">Workshop · 2024</div>
-      <div class="name">Cross-team voice training</div>
-      <div class="meta"><span>Internal</span><span>Slides</span></div>
-    </button>
-    <button type="button" class="sample clickable"
-      data-tag="Doc · 2023"
-      data-title="Editorial style guide"
-      data-client="Nomad Goods"
-      data-role="Copywriter Manager"
-      data-channel="Internal · Documentation"
-      data-results="Living doc, in use today"
-      data-email="images/voice-03-full.jpg">
-      <span class="arrow" aria-hidden="true">→</span>
-      <div class="tag">Doc · 2023</div>
-      <div class="name">Editorial style guide</div>
-      <div class="meta"><span>Internal</span><span>Excerpt</span></div>
-    </button>
-    <button type="button" class="sample clickable"
-      data-tag="Naming · 2023"
-      data-title="Product naming framework"
-      data-client="Nomad Goods"
-      data-role="Copywriter Manager"
-      data-channel="Internal · Framework"
-      data-results="Used for 12+ launches"
-      data-email="images/voice-04-full.jpg">
-      <span class="arrow" aria-hidden="true">→</span>
-      <div class="tag">Naming · 2023</div>
-      <div class="name">Product naming framework</div>
-      <div class="meta"><span>Internal</span><span>Excerpt</span></div>
-    </button>
-  </div>
-</section>
-
-<section class="work-block paper">
-  <div class="work-grid">
-    <div>
-      <div class="label">Section 04</div>
-      <h2>Social<br/>&amp; Ads<em>.</em></h2>
-    </div>
-    <div class="body">
-      <p>
-        Captions, scripts, ad copy, packaging — the everyday writing that adds up. I love the <strong>tight constraints of short-form</strong>, where every word has to earn its place.
-      </p>
-      <p>
-        A small selection of campaigns, posts, and one-off pieces I've enjoyed working on most.
-      </p>
-    </div>
-  </div>
-  <div class="samples">
-    <button type="button" class="sample clickable"
-      data-tag="Campaign · 2024"
-      data-title="Holiday social series"
-      data-client="Nomad Goods"
-      data-role="Copywriter Manager"
-      data-channel="Social · Instagram"
-      data-results="3.2M impressions across series"
-      data-email="images/social-01-full.jpg">
-      <span class="arrow" aria-hidden="true">→</span>
-      <div class="tag">Campaign · 2024</div>
-      <div class="name">Holiday social series</div>
-      <div class="meta"><span>Social</span><span>IG</span></div>
-    </button>
-    <button type="button" class="sample clickable"
-      data-tag="Ads · 2024"
-      data-title="Performance ad copy library"
-      data-client="Nomad Goods"
-      data-role="Copywriter Manager"
-      data-channel="Paid · Meta + Google"
-      data-results="Top variants beat control by 41%"
-      data-email="images/social-02-full.jpg">
-      <span class="arrow" aria-hidden="true">→</span>
-      <div class="tag">Ads · 2024</div>
-      <div class="name">Performance ad copy library</div>
-      <div class="meta"><span>Paid</span><span>Excerpts</span></div>
-    </button>
-    <button type="button" class="sample clickable"
-      data-tag="Packaging · 2023"
-      data-title="Unboxing copy refresh"
-      data-client="Nomad Goods"
-      data-role="Copywriter Manager"
-      data-channel="Print · Packaging"
-      data-results="Live across product line"
-      data-email="images/social-03-full.jpg">
-      <span class="arrow" aria-hidden="true">→</span>
-      <div class="tag">Packaging · 2023</div>
-      <div class="name">Unboxing copy refresh</div>
-      <div class="meta"><span>Print</span><span>Live</span></div>
-    </button>
-    <button type="button" class="sample clickable"
-      data-tag="Script · 2024"
-      data-title="Founder Q&amp;A video"
-      data-client="Nomad Goods"
-      data-role="Scriptwriter"
-      data-channel="Video · Brand content"
-      data-results="500K+ views"
-      data-email="images/social-04-full.jpg">
-      <span class="arrow" aria-hidden="true">→</span>
-      <div class="tag">Script · 2024</div>
-      <div class="name">Founder Q&amp;A video</div>
-      <div class="meta"><span>Video</span><span>YT</span></div>
+      <div class="name">Top-performing paid ads</div>
+      <div class="meta"><span>Paid Social</span><span>Live</span></div>
     </button>
   </div>
 </section>
@@ -926,18 +991,86 @@
     <div class="modal-body">
       <div class="modal-tag" id="modal-tag"></div>
       <h2 class="modal-title" id="modal-title"></h2>
-      <div class="modal-grid">
+      <p class="modal-preview" id="modal-preview"></p>
+      <div class="modal-grid" id="modal-grid">
         <dl class="modal-meta">
-          <dt>Client</dt>
-          <dd id="modal-client"></dd>
-          <dt>Role</dt>
-          <dd id="modal-role"></dd>
           <dt>Channel</dt>
           <dd id="modal-channel"></dd>
-          <dt>Results</dt>
-          <dd id="modal-results"></dd>
+          <dt>Open Rate</dt>
+          <dd id="modal-open"></dd>
+          <dt>Click Rate</dt>
+          <dd id="modal-click"></dd>
+          <dt>Revenue</dt>
+          <dd id="modal-revenue"></dd>
+          <dt>Updated</dt>
+          <dd id="modal-updated"></dd>
+          <dt>Visit</dt>
+          <dd id="modal-url"></dd>
         </dl>
         <div class="modal-email" id="modal-email"></div>
+      </div>
+      <div class="modal-gallery" id="modal-gallery" data-gallery-name="instagram" hidden>
+        <div class="ig-post">
+          <div class="ig-post-img" style="background-image: url('images/social/instagram/starlink.png')"></div>
+          <div class="ig-post-caption">Getting online has never been easier.
+
+Plug Starlink Cable into any 12V or 24V vehicle socket to power Starlink Mini and connect in seconds. No tools, no fuss. Just a simple, reliable setup.
+
+Get yours at the link in bio.<span class="hashtags">#nomad #nomadgoods #starlink</span></div>
+        </div>
+        <div class="ig-post">
+          <div class="ig-post-img" style="background-image: url('images/social/instagram/tracking-card.png')"></div>
+          <div class="ig-post-caption">Tracking Card Pro or Tracking Card Air—which one are you adding to your setup?
+
+Let us know in the comments! 👇<span class="hashtags">#nomad #nomadgoods</span></div>
+        </div>
+        <div class="ig-post">
+          <div class="ig-post-img" style="background-image: url('images/social/instagram/tempo.png')"></div>
+          <div class="ig-post-caption">The best workout gear is the kind you forget you're wearing. ☁️
+
+Don't let a bulky watch band distract you from your New Year's streak. Tempo Band offers a flexible fit that stays secure without the weight. Breathable enough for the gym, comfortable enough for the recovery walk.
+
+Set the tempo for your year. Shop the collection at the link in bio.</div>
+        </div>
+        <div class="ig-post">
+          <div class="ig-post-img" style="background-image: url('images/social/instagram/magnetic-leather-back.png')"></div>
+          <div class="ig-post-caption">Go minimalist. Magnetic Leather Back for iPhone 17 Pro is the ultimate accessory for a case-free feel with MagSafe convenience.
+
+Grab one at the link in bio.<span class="hashtags">#nomad #nomadgoods #iphone17</span></div>
+        </div>
+      </div>
+      <div class="modal-gallery" id="modal-gallery-ads" data-gallery-name="ads" hidden>
+        <div class="product-tile">
+          <div class="product-tile-header">
+            <h3>Tracking Card</h3>
+            <a href="https://nomadgoods.com/products/tracking-card" target="_blank" rel="noopener">Visit product ↗</a>
+          </div>
+          <div class="product-tile-images">
+            <img src="images/social/ads/Tracking Card (2).jpg" alt="" />
+            <img src="images/social/ads/Tracking Card-2.jpg" alt="" />
+            <img src="images/social/ads/Tracking Card-5.jpg" alt="" />
+          </div>
+        </div>
+        <div class="product-tile">
+          <div class="product-tile-header">
+            <h3>Rocky Point Band</h3>
+            <a href="https://nomadgoods.com/products/rocky-point-band-black-hardware-sol" target="_blank" rel="noopener">Visit product ↗</a>
+          </div>
+          <div class="product-tile-images">
+            <img src="images/social/ads/rocky point.png" alt="" />
+            <img src="images/social/ads/rocky point 2.png" alt="" />
+          </div>
+        </div>
+        <div class="product-tile">
+          <div class="product-tile-header">
+            <h3>Rugged Case for iPhone 17 Pro</h3>
+            <a href="https://nomadgoods.com/products/rugged-case-ultra-orange-iphone-17-pro-max" target="_blank" rel="noopener">Visit product ↗</a>
+          </div>
+          <div class="product-tile-images">
+            <img src="images/social/ads/rugged case.jpg" alt="" />
+            <img src="images/social/ads/rugged case 2.jpg" alt="" />
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -950,21 +1083,40 @@
     var fields = {
       tag: document.getElementById('modal-tag'),
       title: document.getElementById('modal-title'),
-      client: document.getElementById('modal-client'),
-      role: document.getElementById('modal-role'),
+      preview: document.getElementById('modal-preview'),
       channel: document.getElementById('modal-channel'),
-      results: document.getElementById('modal-results')
+      open: document.getElementById('modal-open'),
+      click: document.getElementById('modal-click'),
+      revenue: document.getElementById('modal-revenue'),
+      updated: document.getElementById('modal-updated'),
+      url: document.getElementById('modal-url')
     };
     var lastFocused = null;
 
+    var modalGrid = document.getElementById('modal-grid');
+    var galleries = document.querySelectorAll('.modal-gallery');
+
     function openModal(card) {
       lastFocused = card;
+      var gallery = card.dataset.gallery;
+      modalGrid.hidden = !!gallery;
+      galleries.forEach(function(g) {
+        g.hidden = !gallery || g.dataset.galleryName !== gallery;
+      });
       Object.keys(fields).forEach(function(k) {
         var v = card.dataset[k] || '';
-        fields[k].textContent = v;
+        if (k === 'url') {
+          fields[k].innerHTML = v
+            ? '<a href="' + v + '" target="_blank" rel="noopener">' + v.replace(/^https?:\/\//, '').replace(/\/$/, '') + ' ↗</a>'
+            : '';
+        } else {
+          fields[k].textContent = v;
+        }
         if (fields[k].tagName === 'DD') {
           var dt = fields[k].previousElementSibling;
           if (dt && dt.tagName === 'DT') dt.style.display = v ? '' : 'none';
+          fields[k].style.display = v ? '' : 'none';
+        } else if (fields[k].id === 'modal-preview') {
           fields[k].style.display = v ? '' : 'none';
         }
       });
