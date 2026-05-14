@@ -472,6 +472,17 @@
     margin-bottom: 32px;
     max-width: 760px;
   }
+  .modal-body-text {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(16px, 1.4vw, 19px);
+    line-height: 1.6;
+    letter-spacing: -0.005em;
+    color: var(--ink);
+    margin-bottom: 40px;
+    max-width: 720px;
+    white-space: pre-line;
+  }
   .modal-grid {
     display: grid;
     grid-template-columns: 220px 1fr;
@@ -481,6 +492,30 @@
     padding-top: 40px;
   }
   .modal-grid[hidden], .modal-gallery[hidden] { display: none; }
+  .modal-grid.no-meta { grid-template-columns: 1fr; }
+  .modal-grid.no-meta .modal-meta { display: none; }
+  .modal-bloghead {
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-top: 1px solid rgba(26,26,26,0.2);
+    padding-top: 24px;
+    gap: 16px;
+    flex-wrap: wrap;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: var(--ink);
+  }
+  .modal-bloghead strong { font-weight: 500; }
+  .modal-bloghead a {
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    color: var(--ink);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease;
+  }
+  .modal-bloghead a:hover { border-bottom-color: var(--ink); }
+  .modal-bloghead[hidden] { display: none; }
   .modal-meta {
     position: sticky;
     top: 24px;
@@ -945,54 +980,58 @@
   </div>
   <div class="samples">
     <button type="button" class="sample clickable"
-      data-tag="Blog · Live"
-      data-title="How we approach product launch copy"
-      data-updated="April 2026"
-      data-url="#">
+      data-tag="Blog · May 5, 2026"
+      data-title="Introducing Starlink Cable: The Next Step in Connectivity"
+      data-published="May 5, 2026"
+      data-bloglink="https://nomadgoods.com/the-nomadic/say-hello-to-starlink-cable-the-next-step-in-connectivity"
+      data-email="images/blogs/Screenshot 2026-05-14 at 16-46-46 Introducing Starlink Cable The Next Step in Connectivity.png">
       <span class="arrow" aria-hidden="true">→</span>
-      <div class="tag">Updated April 2026</div>
+      <div class="tag">May 5, 2026</div>
       <div class="blog-text">
-        <div class="name">How we approach product launch copy</div>
-        <div class="blog-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</div>
+        <div class="name">Introducing Starlink Cable: The Next Step in Connectivity</div>
+        <div class="blog-body">Whether you're deep in the backcountry, working from the road, or chasing a stronger signal at camp, staying connected matters. While Starlink is a powerful tool for getting online anywhere, we found that supporting accessories haven't kept up, especially when it comes to reliable DC power. That's where our new Starlink Cable comes in.</div>
       </div>
       <div class="meta"><span>Blog</span><span>Live</span></div>
     </button>
     <button type="button" class="sample clickable"
-      data-tag="Blog · Live"
-      data-title="Writing for design-led brands"
-      data-updated="March 2026"
-      data-url="#">
+      data-tag="Blog · April 7, 2026"
+      data-title="A Closer Look at our Camino Leather"
+      data-published="April 7, 2026"
+      data-bloglink="https://nomadgoods.com/the-nomadic/a-closer-look-at-our-camino-leather"
+      data-email="images/blogs/Screenshot 2026-05-14 at 16-46-21 A Closer Look at our Camino Leather.png">
       <span class="arrow" aria-hidden="true">→</span>
-      <div class="tag">Updated March 2026</div>
+      <div class="tag">April 7, 2026</div>
       <div class="blog-text">
-        <div class="name">Writing for design-led brands</div>
-        <div class="blog-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</div>
+        <div class="name">A Closer Look at our Camino Leather</div>
+        <div class="blog-body">A lot has changed at Nomad over the years, but one thing has stayed the same: our draw to leather. We've spent years studying the material, learning how it looks and feels, how it responds to daily wear, and what separates exceptional leather from the rest.</div>
       </div>
       <div class="meta"><span>Blog</span><span>Live</span></div>
     </button>
     <button type="button" class="sample clickable"
-      data-tag="Blog · Live"
-      data-title="Subject line frameworks that convert"
-      data-updated="February 2026"
-      data-url="#">
+      data-tag="Blog · December 9, 2025"
+      data-title="Holiday Shopping, Made Simple."
+      data-published="December 9, 2025"
+      data-bloglink="https://nomadgoods.com/the-nomadic/holiday-shopping-made-simple"
+      data-email="images/blogs/Screenshot 2026-05-14 at 16-46-18 Holiday Shopping Made Simple.png">
       <span class="arrow" aria-hidden="true">→</span>
-      <div class="tag">Updated February 2026</div>
+      <div class="tag">December 9, 2025</div>
       <div class="blog-text">
-        <div class="name">Subject line frameworks that convert</div>
-        <div class="blog-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</div>
+        <div class="name">Holiday Shopping, Made Simple.</div>
+        <div class="blog-body">No matter who you're shopping for this holiday season, we've got you covered with top-quality gifts they'll use every day. From Apple Watch bands to leather wallets, we've compiled our favorite gear in this curated gift guide.</div>
       </div>
       <div class="meta"><span>Blog</span><span>Live</span></div>
     </button>
     <button type="button" class="sample clickable"
-      data-tag="Blog · Live"
-      data-title="Inside Nomad's voice and tone guide"
-      data-updated="January 2026"
-      data-url="#">
+      data-tag="Blog · November 12, 2025"
+      data-title="The Next Step in Wallet Tracking: Meet Tracking Card Pro"
+      data-published="November 12, 2025"
+      data-bloglink="https://nomadgoods.com/the-nomadic/the-next-step-in-wallet-tracking-meet-tracking-card-pro"
+      data-email="images/blogs/Screenshot 2026-05-14 at 16-46-50 The Next Step in Wallet Tracking Meet Tracking Card Pro.png">
       <span class="arrow" aria-hidden="true">→</span>
-      <div class="tag">Updated January 2026</div>
+      <div class="tag">November 12, 2025</div>
       <div class="blog-text">
-        <div class="name">Inside Nomad's voice and tone guide</div>
-        <div class="blog-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</div>
+        <div class="name">The Next Step in Wallet Tracking: Meet Tracking Card Pro</div>
+        <div class="blog-body">If you've ever lost your wallet, you know how stressful it can be to replace everything inside, not to mention the wallet itself. With Tracking Card Pro, that worry is a thing of the past.</div>
       </div>
       <div class="meta"><span>Blog</span><span>Live</span></div>
     </button>
@@ -1066,6 +1105,11 @@
       <div class="modal-tag" id="modal-tag"></div>
       <h2 class="modal-title" id="modal-title"></h2>
       <p class="modal-preview" id="modal-preview"></p>
+      <div class="modal-body-text" id="modal-body"></div>
+      <div class="modal-bloghead" id="modal-bloghead" hidden>
+        <span><strong>Published:</strong> <span id="modal-bloghead-date"></span></span>
+        <a id="modal-bloghead-link" href="" target="_blank" rel="noopener">Read Full Blog ↗</a>
+      </div>
       <div class="modal-grid" id="modal-grid">
         <dl class="modal-meta">
           <dt>Channel</dt>
@@ -1158,6 +1202,7 @@ Grab one at the link in bio.<span class="hashtags">#nomad #nomadgoods #iphone17<
       tag: document.getElementById('modal-tag'),
       title: document.getElementById('modal-title'),
       preview: document.getElementById('modal-preview'),
+      body: document.getElementById('modal-body'),
       channel: document.getElementById('modal-channel'),
       open: document.getElementById('modal-open'),
       click: document.getElementById('modal-click'),
@@ -1169,6 +1214,9 @@ Grab one at the link in bio.<span class="hashtags">#nomad #nomadgoods #iphone17<
 
     var modalGrid = document.getElementById('modal-grid');
     var galleries = document.querySelectorAll('.modal-gallery');
+    var modalBloghead = document.getElementById('modal-bloghead');
+    var modalBlogheadDate = document.getElementById('modal-bloghead-date');
+    var modalBlogheadLink = document.getElementById('modal-bloghead-link');
 
     function openModal(card) {
       lastFocused = card;
@@ -1177,8 +1225,21 @@ Grab one at the link in bio.<span class="hashtags">#nomad #nomadgoods #iphone17<
       galleries.forEach(function(g) {
         g.hidden = !gallery || g.dataset.galleryName !== gallery;
       });
+      modalGrid.classList.remove('no-meta');
+      var published = card.dataset.published || '';
+      var blogLink = card.dataset.bloglink || '';
+      if (published || blogLink) {
+        modalBloghead.hidden = false;
+        modalBlogheadDate.textContent = published;
+        modalBlogheadLink.href = blogLink;
+        modalBlogheadLink.style.display = blogLink ? '' : 'none';
+      } else {
+        modalBloghead.hidden = true;
+      }
+      var hasMeta = false;
       Object.keys(fields).forEach(function(k) {
         var v = card.dataset[k] || '';
+        if (v && fields[k].tagName === 'DD') hasMeta = true;
         if (k === 'url') {
           fields[k].innerHTML = v
             ? '<a href="' + v + '" target="_blank" rel="noopener">' + v.replace(/^https?:\/\//, '').replace(/\/$/, '') + ' ↗</a>'
@@ -1190,10 +1251,11 @@ Grab one at the link in bio.<span class="hashtags">#nomad #nomadgoods #iphone17<
           var dt = fields[k].previousElementSibling;
           if (dt && dt.tagName === 'DT') dt.style.display = v ? '' : 'none';
           fields[k].style.display = v ? '' : 'none';
-        } else if (fields[k].id === 'modal-preview') {
+        } else if (fields[k].id === 'modal-preview' || fields[k].id === 'modal-body') {
           fields[k].style.display = v ? '' : 'none';
         }
       });
+      if (!gallery && !hasMeta) modalGrid.classList.add('no-meta');
       var emailImg = card.dataset.email;
       if (emailImg) {
         modalEmail.innerHTML = '<img src="' + emailImg + '" alt="" />';
