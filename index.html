@@ -66,7 +66,7 @@
   /* hero */
   .hero {
     position: relative;
-    background: #6e6c66;
+    background: var(--sage);
     height: 50vh;
     min-height: 480px;
     overflow: hidden;
@@ -136,6 +136,20 @@
     font-style: italic;
     font-weight: 300;
     color: var(--sage);
+  }
+  .about p .accent a {
+    background-image:
+      linear-gradient(rgba(107,121,101,0.45), rgba(107,121,101,0.45)),
+      linear-gradient(rgba(107,121,101,0.2), rgba(107,121,101,0.2));
+    background-repeat: no-repeat;
+    background-position: left 92%;
+    background-size: 0% 55%, 100% 55%;
+    padding: 0 0.08em;
+    margin: 0 -0.04em;
+    transition: background-size 0.2s ease;
+  }
+  .about p .accent a:hover {
+    background-size: 100% 55%, 100% 55%;
   }
 
   /* section nav */
@@ -342,6 +356,25 @@
     transition: transform 0.3s ease, opacity 0.3s ease;
   }
   .sample.clickable:hover > .arrow { opacity: 1; transform: rotate(-45deg); }
+  .sample .blog-text {
+    flex: 1 1 auto;
+    min-height: 0;
+    display: flex; flex-direction: column;
+    margin: 16px 0;
+  }
+  .sample .blog-body {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--ink);
+    margin-top: 12px;
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(to bottom, black 25%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 25%, transparent 100%);
+  }
   .sample-content > .arrow {
     position: absolute;
     top: 0; right: 28px;
@@ -565,8 +598,8 @@
 
   /* faq */
   .faq {
-    background: var(--paper);
-    color: var(--ink);
+    background: var(--sage);
+    color: var(--cream);
     padding: 140px 56px;
   }
   .faq-grid {
@@ -585,7 +618,7 @@
   .faq-list { display: flex; flex-direction: column; }
   .faq-item {
     padding: 32px 0;
-    border-bottom: 1px solid var(--sage);
+    border-bottom: 1px solid var(--rust);
   }
   .faq-item:first-child { padding-top: 8px; }
   .faq-item:last-child { border-bottom: none; }
@@ -600,7 +633,7 @@
     font-family: 'Inter', sans-serif;
     font-size: 15px;
     line-height: 1.65;
-    color: var(--ink-soft);
+    color: rgba(236,231,220,0.78);
     max-width: 620px;
   }
 
@@ -669,7 +702,7 @@
 
   @media (max-width: 880px) {
     .wrap, nav.top, .about, .work-block, .faq, .contact { padding-left: 24px; padding-right: 24px; }
-    .work-block, .faq { padding-top: 40px; padding-bottom: 40px; }
+    .work-block { padding-top: 40px; padding-bottom: 40px; }
     .section-nav { display: none; }
     .hero-overlay { padding: 140px 24px 0; }
     .hero-headline { padding: 0 24px; }
@@ -721,6 +754,7 @@
 <nav class="section-nav" aria-label="Work sections">
   <a href="#emails">Marketing Emails</a>
   <a href="#web">Web Copy</a>
+  <a href="#blog">Blog Posts</a>
   <a href="#social">Social &amp; Ads</a>
 </nav>
 
@@ -733,10 +767,7 @@
     </div>
     <div class="body">
       <p>
-        Marketing emails are one of Nomad's most powerful storytelling and revenue-driving channels. As Copywriter Manager, I write the copy for every send, translating complex product details into <strong>approachable, compelling messaging</strong> that highlights customer value.
-      </p>
-      <p>
-        I work closely with design and marketing to ensure copy and visuals work hand-in-hand, and we frequently iterate on email design to boost key performance indicators.
+        Marketing emails are one of Nomad's most powerful storytelling and revenue-driving channels. As Copywriter Manager, I write the copy for every send, translating complex product details into <strong>approachable, compelling messaging</strong> that highlights customer value. I work closely with design and marketing to ensure copy and visuals work hand-in-hand, and we frequently iterate on email design to boost key performance indicators.
       </p>
     </div>
   </div>
@@ -837,7 +868,7 @@
     </div>
     <div class="body">
       <p>
-        Product pages, collection pages, blog posts, and more. These examples show how messaging shapes customer experience and builds brand identity.
+        Product pages, collection pages, and other content across our website help build brand identity and shape the customer experience. I write copy that balances clarity and personality, turning technical product details into <strong>benefit-driven messaging</strong> that informs and converts. I partner with design and merchandising to ensure every page reflects Nomad's voice and guides customers toward the right product.
       </p>
     </div>
   </div>
@@ -877,17 +908,6 @@
     </button>
     <button type="button" class="sample clickable"
       data-tag="Web · Live"
-      data-title="Blog homepage"
-      data-updated="May 2026"
-      data-url="https://nomadgoods.com/the-nomadic"
-      data-email="images/webcopy/web-blog.png">
-      <span class="arrow" aria-hidden="true">→</span>
-      <div class="tag">Updated May 2026</div>
-      <div class="name">Blog homepage</div>
-      <div class="meta"><span>Web</span><span>Live</span></div>
-    </button>
-    <button type="button" class="sample clickable"
-      data-tag="Web · Live"
       data-title="Evergreen educational page"
       data-updated="September 2025"
       data-url="https://nomadgoods.com/pages/horween-leather"
@@ -897,18 +917,97 @@
       <div class="name">Evergreen educational page</div>
       <div class="meta"><span>Web</span><span>Live</span></div>
     </button>
+    <button type="button" class="sample clickable"
+      data-tag="Web · Live"
+      data-title="Blog homepage"
+      data-updated="May 2026"
+      data-url="https://nomadgoods.com/the-nomadic"
+      data-email="images/webcopy/web-blog.png">
+      <span class="arrow" aria-hidden="true">→</span>
+      <div class="tag">Updated May 2026</div>
+      <div class="name">Blog homepage</div>
+      <div class="meta"><span>Web</span><span>Live</span></div>
+    </button>
   </div>
 </section>
 
-<section class="work-block cream" id="social">
+<section class="work-block cream" id="blog">
   <div class="work-grid">
     <div>
       <div class="label">Section 03</div>
+      <h2>Blog<br/>Posts<em>.</em></h2>
+    </div>
+    <div class="body">
+      <p>
+        Blogs give us space to tell longer stories, from product deep-dives to holiday gift guides. I write and edit posts that <strong>educate and explain the why</strong> behind our products. I optimize each post for visibility across SEO and AI platforms, making sure our content reaches the right people while staying true to our voice and personality.
+      </p>
+    </div>
+  </div>
+  <div class="samples">
+    <button type="button" class="sample clickable"
+      data-tag="Blog · Live"
+      data-title="How we approach product launch copy"
+      data-updated="April 2026"
+      data-url="#">
+      <span class="arrow" aria-hidden="true">→</span>
+      <div class="tag">Updated April 2026</div>
+      <div class="blog-text">
+        <div class="name">How we approach product launch copy</div>
+        <div class="blog-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</div>
+      </div>
+      <div class="meta"><span>Blog</span><span>Live</span></div>
+    </button>
+    <button type="button" class="sample clickable"
+      data-tag="Blog · Live"
+      data-title="Writing for design-led brands"
+      data-updated="March 2026"
+      data-url="#">
+      <span class="arrow" aria-hidden="true">→</span>
+      <div class="tag">Updated March 2026</div>
+      <div class="blog-text">
+        <div class="name">Writing for design-led brands</div>
+        <div class="blog-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</div>
+      </div>
+      <div class="meta"><span>Blog</span><span>Live</span></div>
+    </button>
+    <button type="button" class="sample clickable"
+      data-tag="Blog · Live"
+      data-title="Subject line frameworks that convert"
+      data-updated="February 2026"
+      data-url="#">
+      <span class="arrow" aria-hidden="true">→</span>
+      <div class="tag">Updated February 2026</div>
+      <div class="blog-text">
+        <div class="name">Subject line frameworks that convert</div>
+        <div class="blog-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</div>
+      </div>
+      <div class="meta"><span>Blog</span><span>Live</span></div>
+    </button>
+    <button type="button" class="sample clickable"
+      data-tag="Blog · Live"
+      data-title="Inside Nomad's voice and tone guide"
+      data-updated="January 2026"
+      data-url="#">
+      <span class="arrow" aria-hidden="true">→</span>
+      <div class="tag">Updated January 2026</div>
+      <div class="blog-text">
+        <div class="name">Inside Nomad's voice and tone guide</div>
+        <div class="blog-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</div>
+      </div>
+      <div class="meta"><span>Blog</span><span>Live</span></div>
+    </button>
+  </div>
+</section>
+
+<section class="work-block paper" id="social">
+  <div class="work-grid">
+    <div>
+      <div class="label">Section 04</div>
       <h2>Socials<br/>&amp; Ads<em>.</em></h2>
     </div>
     <div class="body">
       <p>
-        Social posts, video scripts, ads, and more. These examples of shorter form copy showcase my ability to <strong>adjust tone, voice, and style</strong> across platforms.
+        Social posts and ads make up Nomad's shorter-form copy. The examples here showcase my ability to adjust tone, voice, and style across platforms, from punchy ad headlines to playful social captions. I write copy that <strong>stops the scroll</strong>, stays true to brand, and drives engagement.
       </p>
     </div>
   </div>
@@ -932,34 +1031,9 @@
   </div>
 </section>
 
-<!-- FAQ -->
-<section class="faq">
-  <div class="faq-grid">
-    <h2>Working<br/>Together<em>.</em></h2>
-    <div class="faq-list">
-      <div class="faq-item">
-        <div class="q">What kind of projects do you take on?</div>
-        <div class="a">Cross-channel copy for design-led brands — email, web, brand voice work, social, packaging. I love long-running partnerships where I can really learn a brand, but one-off campaigns are great too.</div>
-      </div>
-      <div class="faq-item">
-        <div class="q">How do you work with design teams?</div>
-        <div class="a">Closely. Copy and design need to speak the same language, so I'm in the file early and often — figma, slack, async docs, whatever the team uses. I write to the layout, not just at it.</div>
-      </div>
-      <div class="faq-item">
-        <div class="q">What's your turnaround?</div>
-        <div class="a">Depends on scope, but most single-asset pieces (an email, a landing hero) move in a few business days. Larger voice or guideline work runs on a project timeline we set together.</div>
-      </div>
-      <div class="faq-item">
-        <div class="q">Do you take on freelance?</div>
-        <div class="a">Selectively, yes. The best fit is design-driven brands with a clear voice they want to sharpen. Send a note with what you're working on and I'll get back to you within a couple of days.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- CONTACT -->
 <section class="contact" id="contact">
-  <h3>Let's stay <em>in touch.</em></h3>
+  <h3>Let's stay <em>in touch!</em></h3>
   <div class="contact-grid">
     <div>
       <div class="label">Email</div>
